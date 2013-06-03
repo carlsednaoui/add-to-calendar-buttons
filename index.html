@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="calendar.js"></script>
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+    <div class="new-cal"></div>
+  </body>
+
+  <script>
+    window.onload = function() {
+      $('.new-cal').append(createAddToCalendarLinks({
+        options: {
+          // services: ['google', 'yahoo'],                 // -> To build
+          class: 'love',
+          id: 'red'
+        },
+        data: {
+          title: 'This is the event title',       // Event title
+          start: new Date('June 15, 2013 13:00'),  // Event start date
+          duration: 120,                          // Event duration (IN MINUTES)
+          address: '714 Greenwich St',
+          description: 'Go to carls house and play MTG'
+        }
+      }));
+    };
+  </script>
+</html>

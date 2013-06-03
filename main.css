@@ -1,0 +1,53 @@
+.calendar-title {
+  cursor: pointer;
+}
+
+.calendar-title > .icon-plus, .calendars > div > a > span {
+  letter-spacing: 4px;
+} 
+
+.calendars {
+  padding-left: 10px;
+}
+
+.calendars a {
+  text-decoration: none;
+}
+
+.calendars a:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.icon-calendar, .icon-calendar-2, .icon-yahoo, .icon-google {
+  height: 18px;
+  width: 18px;
+}
+
+/* Using Sprites */
+
+.sprite {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-image: url('calendar_sprite.png');  
+}
+
+.icon-plus-sprite {}
+
+.icon-calendar-sprite { 
+  background-position: -68px 0;
+}
+
+.icon-calendar-2-sprite {
+  width: 20px;
+  background-position: -16px 0;
+}
+
+.icon-yahoo-sprite {
+  background-position: -36px +4px;
+}
+
+.icon-google-sprite {
+  background-position: -52px 0;
+}
