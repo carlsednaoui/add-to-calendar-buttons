@@ -27,3 +27,9 @@ Call 'createAddToCalendarLinks' with your event info, pass in any optional param
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
+
+## TODO
+- Make this fail gracefully when no Data is passed
+- Allow multiple calendars on one page
+- Allow user to pass in end time v.s. only event duration
+- Add option for all-day events?

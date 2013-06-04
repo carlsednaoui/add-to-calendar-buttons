@@ -35,7 +35,7 @@ var createAddToCalendarLinks = function(params) {
       var href = encodeURI([
         'http://calendar.yahoo.com/?v=60&view=d&type=20',
         '&title=' + (event.title || ''),
-        '&st=' + (formatTime(new Date(event.start - (240 * 60000))) || ''),
+        '&st=' + (formatTime(new Date(event.start - (event.start.getTimezoneOffset() * 60000))) || ''), // Again, Yahoo is cray, we need to remove the timezone
         '&dur=' + ( yahooEventDuration || ''),
         '&desc=' + (event.description || ''),
         '&in_loc=' + (event.address || '')
