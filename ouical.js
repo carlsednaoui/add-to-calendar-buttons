@@ -1,7 +1,5 @@
 var createAddToCalendarLinks = function(params) {
 
-  // Create the result element, this is what will be returned
-  var result = document.createElement('div');
   var msInMinutes = 60 * 1000;
 
   var formatTime = function(date) {
@@ -35,8 +33,8 @@ var createAddToCalendarLinks = function(params) {
       var href = encodeURI([
         'http://calendar.yahoo.com/?v=60&view=d&type=20',
         '&title=' + (event.title || ''),
-        '&st=' + (formatTime(new Date(event.start - (event.start.getTimezoneOffset() * 60000))) || ''), // Again, Yahoo is cray, we need to remove the timezone
-        '&dur=' + ( yahooEventDuration || ''),
+        '&st=' + (formatTime(new Date(event.start - (event.start.getTimezoneOffset() * msInMinutes))) || ''), // Remove timezone from event time
+        '&dur=' + (yahooEventDuration || ''),
         '&desc=' + (event.description || ''),
         '&in_loc=' + (event.address || '')
       ].join(''));
@@ -76,10 +74,14 @@ var createAddToCalendarLinks = function(params) {
     };
   };
 
+  var result = document.createElement('div');
+  var randomID = Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
+
   // Make sure we have the necessary event data, such as start time and event duration
   if (params.data && params.data.start && params.data.duration) {
-    result.innerHTML = '<label for="add-to-calendar-checkbox" id="add-to-calendar-checkbox-label">+ Add to my Calendar</label>' ;
-    result.innerHTML += '<input name="add-to-calendar-checkbox" id="add-to-calendar-checkbox" type="checkbox">';
+
+    result.innerHTML = '<label for="add-to-calendar-checkbox '+ randomID + '" class="add-to-calendar-checkbox" id="add-to-calendar-checkbox-label">+ Add to my Calendar</label>' ;
+    result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="add-to-calendar-checkbox '+ randomID + '" type="checkbox">';
 
     var generatedCalendars = GENERATORS(params.data);
 
@@ -93,7 +95,6 @@ var createAddToCalendarLinks = function(params) {
   }
 
   // Add Class and ID to div if either one is passed as an option
-  var randomID = Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID, in case you have several calendars on the same page
   result.className = 'add-to-calendar' + ((params.options && params.options.class) ? (' ' + params.options.class) : '');
   result.id = 'add-to-calendar-' + randomID + ((params.options &&  params.options.id) ? (' ' + params.options.id) : '');
 

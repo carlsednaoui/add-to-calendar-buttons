@@ -7,6 +7,7 @@
 
   <body>
     <div class="new-cal"></div>
+    <div class="new-cal2"></div>
   </body>
 
   <script>
@@ -25,6 +26,21 @@
         }
       });
       document.querySelectorAll('.new-cal')[0].appendChild(myCalendar);
+    
+      var myCalendar2 = createAddToCalendarLinks({
+        options: {
+          class: 'my-class',
+          id: 'my-id2'
+        },
+        data: {
+          title: 'Go to the gym',             // Event title
+          start: new Date('June 15, 2013 17:00'),   // Event start date
+          duration: 60,                            // Event duration (IN MINUTES)
+          address: 'Though Boys Gym',
+          description: 'Work them biceps out.'
+        }
+      });
+      document.querySelectorAll('.new-cal2')[0].appendChild(myCalendar2);
     };
   </script>
 </html>
