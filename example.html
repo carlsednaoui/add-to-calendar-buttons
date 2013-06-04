@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="calendar.js"></script>
+    <script src="ouical.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
 
@@ -13,16 +13,15 @@
     window.onload = function() {
       var myCalendar = createAddToCalendarLinks({
         options: {
-          // services: ['google', 'yahoo'],                 // -> To build
           class: 'my-class',
           id: 'my-id'
         },
         data: {
-          title: 'This is the event title',       // Event title
-          start: new Date('June 15, 2013 13:00'),  // Event start date
-          duration: 120,                          // Event duration (IN MINUTES)
-          address: '714 Greenwich St',
-          description: 'Go to carls house and play MTG'
+          title: 'Billiard And Drinks',               // Event title
+          start: new Date('June 15, 2013 19:00'),   // Event start date
+          duration: 120,                            // Event duration (IN MINUTES)
+          address: '714 Moon Street, New York',
+          description: 'Get together with coworkers and shoot some pool.'
         }
       });
       document.querySelectorAll('.new-cal')[0].appendChild(myCalendar);
