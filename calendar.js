@@ -43,7 +43,7 @@ var createAddToCalendarLinks = function(params) {
       return '<a class="icon-yahoo" target="_blank" href="' + href + '">Add to Yahoo</a>';
     };
 
-    var ics = function(event) {
+    var ics = function(event, eClass, calendarName) {
       var href = encodeURI(
       'data:text/calendar;charset=utf8,' + [
       'BEGIN:VCALENDAR',
@@ -57,20 +57,30 @@ var createAddToCalendarLinks = function(params) {
       'LOCATION:' + (event.address || ''),
       'END:VEVENT',
       'END:VCALENDAR'].join('\n'));
-      return '<a class="icon-ics" target="_blank" href="' + href + '">Add to ICS</a>';
+      return '<a class="' + eClass + '" target="_blank" href="' + href + '">Add to ' + calendarName + '</a>';
     };
 
-    //$('.ical a').on('click', function() {window.open( "data:text/calendar;charset=utf8," + encodeURI(iCal) ); false;});
+    var ical = function(event) {
+      return ics(event, 'icon-ical', 'iCal');
+    };
+
+    var outlook = function(event) {
+      return ics(event, 'icon-outlook', 'Outlook');
+    };
 
     return {
       google: google(event),
       yahoo: yahoo(event),
-      ics: ics(event)
+      ical: ical(event),
+      outlook: outlook(event)
     };
   };
 
   // Make sure we have the necessary event data, such as start time and event duration
   if (params.data && params.data.start && params.data.duration) {
+    result.innerHTML = '<label for="add-to-calendar-checkbox" id="add-to-calendar-checkbox-label">+ Add to my Calendar</label>' ;
+    result.innerHTML += '<input name="add-to-calendar-checkbox" id="add-to-calendar-checkbox" type="checkbox">';
+
     var generatedCalendars = GENERATORS(params.data);
 
     Object.keys(generatedCalendars).forEach(function(services) {

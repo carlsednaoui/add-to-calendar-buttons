@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="calendar.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
@@ -12,7 +11,7 @@
 
   <script>
     window.onload = function() {
-      $('.new-cal').append(createAddToCalendarLinks({
+      var myCalendar = createAddToCalendarLinks({
         options: {
           // services: ['google', 'yahoo'],                 // -> To build
           class: 'my-class',
@@ -25,7 +24,8 @@
           address: '714 Greenwich St',
           description: 'Go to carls house and play MTG'
         }
-      }));
+      });
+      document.querySelectorAll('.new-cal')[0].appendChild(myCalendar);
     };
   </script>
 </html>
