@@ -23,7 +23,7 @@ var createAddToCalendarLinks = function(params) {
         '&location=' + (event.address || ''),
         '&sprop=&sprop=name:'
       ].join(''));
-      return '<a class="icon-google" target="_blank" href="' + href + '">Add to Google</a>';
+      return '<a class="icon-google" target="_blank" href="' + href + '">Google Calendar</a>';
     };
 
     var yahoo = function(event) {
@@ -40,7 +40,7 @@ var createAddToCalendarLinks = function(params) {
         '&desc=' + (event.description || ''),
         '&in_loc=' + (event.address || '')
       ].join(''));
-      return '<a class="icon-yahoo" target="_blank" href="' + href + '">Add to Yahoo</a>';
+      return '<a class="icon-yahoo" target="_blank" href="' + href + '">Yahoo! Calendar</a>';
     };
 
     var ics = function(event, eClass, calendarName) {
@@ -57,7 +57,7 @@ var createAddToCalendarLinks = function(params) {
       'LOCATION:' + (event.address || ''),
       'END:VEVENT',
       'END:VCALENDAR'].join('\n'));
-      return '<a class="' + eClass + '" target="_blank" href="' + href + '">Add to ' + calendarName + '</a>';
+      return '<a class="' + eClass + '" target="_blank" href="' + href + '">' + calendarName + ' Calendar</a>';
     };
 
     var ical = function(event) {
