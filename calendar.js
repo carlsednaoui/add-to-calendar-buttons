@@ -11,6 +11,7 @@ var createAddToCalendarLinks = function(params) {
   var GENERATORS = function(event) {
     var startTime = formatTime(event.start);
     var endTime = formatTime(new Date(event.start.getTime() + (event.duration * msInMinutes)));
+
     var google = function(event) {
       var href = encodeURI([
         'https://www.google.com/calendar/render',
@@ -42,18 +43,38 @@ var createAddToCalendarLinks = function(params) {
       return '<a class="icon-yahoo" target="_blank" href="' + href + '">Add to Yahoo</a>';
     };
 
+    var ics = function(event) {
+      var href = encodeURI(
+      'data:text/calendar;charset=utf8,' + [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'BEGIN:VEVENT',
+      'URL:' + document.URL,
+      'DTSTART:' + (startTime || ''),
+      'DTEND:' + (endTime || ''),
+      'SUMMARY:' + (event.title || ''),
+      'DESCRIPTION:' + (event.description || ''),
+      'LOCATION:' + (event.address || ''),
+      'END:VEVENT',
+      'END:VCALENDAR'].join('\n'));
+      return '<a class="icon-ics" target="_blank" href="' + href + '">Add to ICS</a>';
+    };
+
+    //$('.ical a').on('click', function() {window.open( "data:text/calendar;charset=utf8," + encodeURI(iCal) ); false;});
+
     return {
       google: google(event),
-      yahoo: yahoo(event)
+      yahoo: yahoo(event),
+      ics: ics(event)
     };
   };
 
   // Make sure we have the necessary event data, such as start time and event duration
   if (params.data && params.data.start && params.data.duration) {
     var generatedCalendars = GENERATORS(params.data);
-    
+
     Object.keys(generatedCalendars).forEach(function(services) {
-      result.innerHTML += '<li>' + generatedCalendars[services] + '</li>';
+      result.innerHTML += generatedCalendars[services];
     });
 
   } else {
