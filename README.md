@@ -2,7 +2,7 @@
 
 A simple JS script that enables you to add an "add to calendar" button to your events.
 
-Call 'createAddToCalendarLinks' with your event info, pass in any optional parameters such as a class and/ or id and boom! Insert your add-to-calendar div wherever you'd like. 
+Call 'createAddToCalendarLinks' with your event info, pass in any optional parameters such as a class and/ or id and boom! Insert your add-to-calendar div wherever you'd like.
 
 ## Example
 
@@ -21,3 +21,9 @@ Call 'createAddToCalendarLinks' with your event info, pass in any optional param
     });
 
 [Here is the live example](http://carlsednaoui.github.io/ouical/example.html)
+
+## GitHub Project Page
+[Official Project Page](http://carlsednaoui.github.io/ouical/)
+
+## License
+[MIT](http://opensource.org/licenses/MIT)
