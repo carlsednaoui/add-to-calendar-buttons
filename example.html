@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="ouical.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+    <div class="new-cal"></div>
+  </body>
+
+  <script>
+    window.onload = function() {
+      var myCalendar = createAddToCalendarLinks({
+        options: {
+          class: 'my-class',
+          id: 'my-id'
+        },
+        data: {
+          title: 'Billiard And Drinks',               // Event title
+          start: new Date('June 15, 2013 19:00'),   // Event start date
+          duration: 120,                            // Event duration (IN MINUTES)
+          address: '714 Moon Street, New York',
+          description: 'Get together with coworkers and shoot some pool.'
+        }
+      });
+      document.querySelectorAll('.new-cal')[0].appendChild(myCalendar);
+    };
+  </script>
+</html>
