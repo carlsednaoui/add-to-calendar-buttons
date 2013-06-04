@@ -12,7 +12,7 @@ Here is an example:
         id: 'my-id'
       },
       data: {
-        title: 'Billiard & Drinks',         // Event title
+        title: 'Billiard & Drinks',               // Event title
         start: new Date('June 15, 2013 19:00'),   // Event start date
         duration: 120,                            // Event duration (IN MINUTES)
         address: '714 Moon Street, New York',
