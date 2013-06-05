@@ -17,7 +17,7 @@ The only fields that are mandatory are:
       options: {
         class: 'my-class',
 
-        // You need to pass in an ID, if you don't one will be generated for you
+        // You need to pass an ID. If you don't one will be generated for you.
         id: 'my-id'
       },
       data: {
