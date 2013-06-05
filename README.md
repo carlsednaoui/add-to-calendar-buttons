@@ -12,9 +12,12 @@ The only fields that are mandatory are:
 
 ## Example
 
-    createAddToCalendarLinks({
+    var createCalendar = getAddToCalendar(); 
+    var myCalendar = createCalendar({
       options: {
         class: 'my-class',
+
+        // You need to pass in an ID, if you don't one will be generated for you
         id: 'my-id'
       },
       data: {
@@ -38,6 +41,8 @@ The only fields that are mandatory are:
         description: 'Get together with coworkers and shoot some pool.'
       }
     });
+
+    document.querySelector('#place-where-i-want-this-calendar').appendChild(myCalendar);
 
 [Here is the live example](http://carlsednaoui.github.io/ouical/example.html)
 
