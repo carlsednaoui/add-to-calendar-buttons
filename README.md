@@ -44,5 +44,8 @@ The only fields that are mandatory are:
 ## GitHub Project Page
 [Official Project Page](http://carlsednaoui.github.io/ouical/)
 
+## TODO
+  - Force user to provide a unique ID for each calendar. Use this ID for both the label and returned DIV.
+
 ## License
 [MIT](http://opensource.org/licenses/MIT)
