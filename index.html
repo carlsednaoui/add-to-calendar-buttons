@@ -55,9 +55,12 @@
 </ul><h2>
 <a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
 
-<pre><code>createAddToCalendarLinks({
+<pre><code>var createCalendar = getAddToCalendar(); 
+var myCalendar = createCalendar({
   options: {
     class: 'my-class',
+
+    // You need to pass an ID. If you don't, one will be generated for you.
     id: 'my-id'
   },
   data: {
@@ -81,6 +84,8 @@
     description: 'Get together with coworkers and shoot some pool.'
   }
 });
+
+document.querySelector('#place-where-i-want-this-calendar').appendChild(myCalendar);
 </code></pre>
 
 <p><a href="http://carlsednaoui.github.io/ouical/example.html">Here is the live example</a></p>
