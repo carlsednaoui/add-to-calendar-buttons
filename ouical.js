@@ -3,7 +3,7 @@ var createAddToCalendarLinks = function(params) {
   var msInMinutes = 60 * 1000;
 
   var formatTime = function(date) {
-    return date.toISOString().replace(/[-:]|(\.\d{3})/g, '');
+    return date.toISOString().replace(/-|:|\.\d+/g, '');
   };
 
   var GENERATORS = function(event) {
