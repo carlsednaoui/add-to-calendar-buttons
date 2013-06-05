@@ -3,16 +3,18 @@
   <head>
     <script src="ouical.min.js"></script>
     <link rel="stylesheet" href="main.css">
+    <title>OuiCal Example</title>
   </head>
 
   <body>
     <div class="new-cal"></div>
     <div class="new-cal2"></div>
   <script>
-      var myCalendar = createAddToCalendarLinks({
+      var createCalendar = getAddToCalendar(); 
+      var myCalendar = createCalendar({
         options: {
           class: 'my-class',
-          id: 'my-id'
+          id: 'my-id'                               // You need to pass an ID. If you don't, one will be generated for you.
         },
         data: {
           title: 'Billiard And Drinks',             // Event title
@@ -24,10 +26,9 @@
           description: 'Get together with coworkers and shoot some pool.'
         }
       }),
-      myCalendar2 = createAddToCalendarLinks({
+      myCalendar2 = createCalendar({
         options: {
-          class: 'my-class',
-          id: 'my-id2'
+          class: 'my-class'                         // Notice how this one does not have a preset ID
         },
         data: {
           title: 'Go to the gym',
