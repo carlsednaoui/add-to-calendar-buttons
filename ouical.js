@@ -77,13 +77,13 @@ function getAddToCalendar() {
     };
 
     var result = document.createElement('div');
-    var randomID = Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
+    var calendarId = (params.options && params.options.id) ? params.options.id : Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
 
     // Make sure we have the necessary event data, such as start time and event duration
     if (params.data && params.data.start && (params.data.end || params.data.duration)) {
 
-      result.innerHTML = '<label for="add-to-calendar-checkbox '+ randomID + '" class="add-to-calendar-checkbox" id="add-to-calendar-checkbox-label">+ Add to my Calendar</label>' ;
-      result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="add-to-calendar-checkbox '+ randomID + '" type="checkbox">';
+      result.innerHTML = '<label for="checkbox-for-' + calendarId + '" class="add-to-calendar-checkbox">+ Add to my Calendar</label>' ;
+      result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="checkbox-for-' + calendarId + '" type="checkbox">';
 
       var generatedCalendars = GENERATORS(params.data);
 
@@ -98,7 +98,7 @@ function getAddToCalendar() {
 
     // Add Class and ID to div if either one is passed as an option
     result.className = 'add-to-calendar' + ((params.options && params.options.class) ? (' ' + params.options.class) : '');
-    result.id = 'add-to-calendar-' + randomID + ((params.options &&  params.options.id) ? (' ' + params.options.id) : '');
+    result.id = calendarId;
 
     return result;
   };
