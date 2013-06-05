@@ -8,10 +8,7 @@
   <body>
     <div class="new-cal"></div>
     <div class="new-cal2"></div>
-  </body>
-
   <script>
-    window.onload = function() {
       var myCalendar = createAddToCalendarLinks({
         options: {
           class: 'my-class',
@@ -25,7 +22,6 @@
           description: 'Get together with coworkers and shoot some pool.'
         }
       });
-      document.querySelectorAll('.new-cal')[0].appendChild(myCalendar);
     
       var myCalendar2 = createAddToCalendarLinks({
         options: {
@@ -40,7 +36,8 @@
           description: 'Work them biceps out.'
         }
       });
+      document.querySelectorAll('.new-cal')[0].appendChild(myCalendar);
       document.querySelectorAll('.new-cal2')[0].appendChild(myCalendar2);
-    };
   </script>
+  </body>
 </html>
