@@ -46,7 +46,13 @@
 
 <p>Call 'createAddToCalendarLinks' with your event info, pass in any optional parameters such as a class and/ or id and boom! Insert your add-to-calendar div wherever you'd like.</p>
 
-<h2>
+<p>The only fields that are mandatory are:</p>
+
+<ul>
+<li>Start time</li>
+<li>End time (or event duration, in minutes)</li>
+<li>Event tile</li>
+</ul><h2>
 <a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
 
 <pre><code>createAddToCalendarLinks({
@@ -71,11 +77,13 @@
     // Event Address
     address: '714 Moon Street, New York',
 
-   // Event Description
+    // Event Description
     description: 'Get together with coworkers and shoot some pool.'
   }
 });
 </code></pre>
+
+<p><a href="http://carlsednaoui.github.io/ouical/example.html">Here is the live example</a></p>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
