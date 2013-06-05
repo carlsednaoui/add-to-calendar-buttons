@@ -4,6 +4,12 @@ A simple JS script that enables you to add an "add to calendar" button to your e
 
 Call 'createAddToCalendarLinks' with your event info, pass in any optional parameters such as a class and/ or id and boom! Insert your add-to-calendar div wherever you'd like.
 
+The only fields that are mandatory are:
+
+  - Start time
+  - End time (or event duration, in minutes)
+  - Event tile
+
 ## Example
 
     createAddToCalendarLinks({
@@ -28,7 +34,7 @@ Call 'createAddToCalendarLinks' with your event info, pass in any optional param
         // Event Address
         address: '714 Moon Street, New York',
 
-       // Event Description
+        // Event Description
         description: 'Get together with coworkers and shoot some pool.'
       }
     });
