@@ -8,7 +8,7 @@ var createAddToCalendarLinks = function(params) {
 
   var GENERATORS = function(event) {
     var startTime = formatTime(event.start);
-    var endTime = formatTime(new Date(event.start.getTime() + (event.duration * msInMinutes)));
+    var endTime = event.end ? formatTime(event.end) : formatTime(new Date(event.start.getTime() + (event.duration * msInMinutes)));
 
     var google = function(event) {
       var href = encodeURI([
@@ -25,9 +25,10 @@ var createAddToCalendarLinks = function(params) {
     };
 
     var yahoo = function(event) {
+      var eventDuration = event.end ? ((event.end.getTime() - event.start.getTime())/ msInMinutes) : event.duration;
       // Yahoo dates are crazy, we need to convert the duration from minutes to hh:mm
-      var yahooHourDuration = event.duration < 600 ? '0' + Math.floor((event.duration / 60)) : Math.floor((event.duration / 60));
-      var yahooMinuteDuration = event.duration % 60 < 10 ? '0' + event.duration % 60 : event.duration % 60;
+      var yahooHourDuration = eventDuration < 600 ? '0' + Math.floor((eventDuration / 60)) : Math.floor((eventDuration / 60));
+      var yahooMinuteDuration = eventDuration % 60 < 10 ? '0' + eventDuration % 60 : eventDuration % 60;
       var yahooEventDuration = yahooHourDuration + yahooMinuteDuration;
 
       var href = encodeURI([
@@ -78,7 +79,7 @@ var createAddToCalendarLinks = function(params) {
   var randomID = Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
 
   // Make sure we have the necessary event data, such as start time and event duration
-  if (params.data && params.data.start && params.data.duration) {
+  if (params.data && params.data.start && (params.data.end || params.data.duration)) {
 
     result.innerHTML = '<label for="add-to-calendar-checkbox '+ randomID + '" class="add-to-calendar-checkbox" id="add-to-calendar-checkbox-label">+ Add to my Calendar</label>' ;
     result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="add-to-calendar-checkbox '+ randomID + '" type="checkbox">';

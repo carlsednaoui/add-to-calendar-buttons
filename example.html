@@ -18,26 +18,28 @@
           title: 'Billiard And Drinks',             // Event title
           start: new Date('June 15, 2013 19:00'),   // Event start date
           duration: 120,                            // Event duration (IN MINUTES)
+          end: new Date('June 15, 2013 23:00'),     // You can also choose to set an end time.
+                                                    // If an end time is set, this will take precedence over duration
           address: '714 Moon Street, New York',
           description: 'Get together with coworkers and shoot some pool.'
         }
-      });
-    
-      var myCalendar2 = createAddToCalendarLinks({
+      }),
+      myCalendar2 = createAddToCalendarLinks({
         options: {
           class: 'my-class',
           id: 'my-id2'
         },
         data: {
-          title: 'Go to the gym',             // Event title
-          start: new Date('June 15, 2013 17:00'),   // Event start date
-          duration: 60,                            // Event duration (IN MINUTES)
+          title: 'Go to the gym',
+          start: new Date('June 15, 2013 17:00'),
+          duration: 60,
           address: 'Tough Boys Gym',
           description: 'Work them biceps out.'
         }
       });
-      document.querySelectorAll('.new-cal')[0].appendChild(myCalendar);
-      document.querySelectorAll('.new-cal2')[0].appendChild(myCalendar2);
+
+      document.querySelector('.new-cal').appendChild(myCalendar);
+      document.querySelector('.new-cal2').appendChild(myCalendar2);
   </script>
   </body>
 </html>

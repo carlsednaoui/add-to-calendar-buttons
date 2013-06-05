@@ -15,6 +15,8 @@ Call 'createAddToCalendarLinks' with your event info, pass in any optional param
         title: 'Billiard And Drinks',             // Event title
         start: new Date('June 15, 2013 19:00'),   // Event start date
         duration: 120,                            // Event duration (IN MINUTES)
+        end: new Date('June 15, 2013 23:00'),     // You can also choose to set an end time.
+                                                  // If an end time is set, this will take precedence over duration
         address: '714 Moon Street, New York',
         description: 'Get together with coworkers and shoot some pool.'
       }
@@ -24,10 +26,6 @@ Call 'createAddToCalendarLinks' with your event info, pass in any optional param
 
 ## GitHub Project Page
 [Official Project Page](http://carlsednaoui.github.io/ouical/)
-
-## TODO
-- Allow user to pass in end time v.s. only event duration
-- Add option for all-day events
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
