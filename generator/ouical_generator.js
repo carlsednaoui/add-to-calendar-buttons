@@ -12,6 +12,7 @@ document.getElementById('calendar-generator').onsubmit = function() {
   var eventId     = document.getElementById('event-id').value;
   var eventClass  = document.getElementById('event-class').value;
 
+  // Make sure basic info is passed in
   if (!(title && start && end)) {
     console.log('Add some details');
     return false;
@@ -38,7 +39,7 @@ document.getElementById('calendar-generator').onsubmit = function() {
   var embedTextArea = document.createElement('textarea');
   embedTextArea.setAttribute('rows', 10);
   embedTextArea.setAttribute('cols', 80);
-  document.getElementById('html-result').innerHTML += "Copy and paste this code:";
+  document.getElementById('html-result').innerHTML += '<p class="instructions">Copy and paste this code:</p>';
   document.getElementById('html-result').appendChild(embedTextArea).value = myCalendar.innerHTML;
 
 
