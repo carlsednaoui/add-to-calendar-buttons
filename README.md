@@ -45,6 +45,9 @@ The only fields that are mandatory are:
 
 [Here is the live example](http://carlsednaoui.github.io/ouical/example.html)
 
+## Calendar Generator
+Need to generate an add-to-calendar on the fly? No problem, [go here](http://carlsednaoui.github.io/ouical/generator/generator.html).
+
 ## GitHub Project Page
 [Official Project Page](http://carlsednaoui.github.io/ouical/)
 
