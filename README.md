@@ -12,33 +12,32 @@ The only fields that are mandatory are:
 
 ## Example
 
-    var createCalendar = getAddToCalendar(); 
     var myCalendar = createCalendar({
       options: {
         class: 'my-class',
-
+        
         // You need to pass an ID. If you don't, one will be generated for you.
         id: 'my-id'
       },
       data: {
         // Event title
-        title: 'Billiard And Drinks',
+        title: 'Get on the front page of HN',
 
         // Event start date
         start: new Date('June 15, 2013 19:00'),
-
+        
         // Event duration (IN MINUTES)
         duration: 120,
 
         // You can also choose to set an end time. 
         // If an end time is set, this will take precedence over duration.
-        end: new Date('June 15, 2013 23:00'),
+        end: new Date('June 15, 2013 23:00'),     
 
         // Event Address
-        address: '714 Moon Street, New York',
+        address: 'The internet',
 
         // Event Description
-        description: 'Get together with coworkers and shoot some pool.'
+        description: 'Get on the front page of HN, then prepare for world domination.'
       }
     });
 
