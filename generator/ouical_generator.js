@@ -12,8 +12,12 @@ document.getElementById('calendar-generator').onsubmit = function() {
   var eventId     = document.getElementById('event-id').value;
   var eventClass  = document.getElementById('event-class').value;
 
+  if (!(title && start && end)) {
+    console.log('Add some details');
+    return false;
+  }
+
   // Create the calendar
-  var createCalendar = getAddToCalendar();
   var myCalendar = createCalendar({
     options: {
       class: eventClass,

@@ -1,14 +1,42 @@
 label, textarea, input[type=submit] {
   display: inline-block;
+  margin-bottom: 2%;
 }
 
 label {
   text-align: right;
+  width: 25%;
 }
 
+label + input {
+    width: 35%;
+    margin: 0 30% 0 1%;
+}
+
+input[type=submit] {
+  padding: 10px;
+  background-color: #3e73f8;
+  color: #fdfaff;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  display: block;
+  margin: 15px auto;
+}
+
+textarea {
+  margin-left: 6px;
+  padding: 0;
+}
 body {
   font-family: helvetica;
   color: #080a34;
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 600px;
 }
 
 header {
@@ -26,10 +54,10 @@ h1 {
 
 h2 {
   font-size: 1.5em;
-  margin: 20px 0 20px 20px;
+  margin: 20px 0;
   font-weight:normal;
 }
 
 #calendar-generator {
-  margin: 20px 0 20px 30px;
+  margin: 20px 0;
 }
