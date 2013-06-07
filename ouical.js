@@ -109,25 +109,15 @@
       (params.data.end !== undefined || params.data.duration !== undefined);
   };
 
-  exports.createCalendar = function(params) {
-    if (!validParams(params)) {
-      console.log('Event details missing.');
-      return;
-    }
-
+  var generateMarkup = function(calendars, params, calendarId) {
     var result = document.createElement('div');
-    var calendarId = (params.options && params.options.id) ?
-      params.options.id :
-      Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
 
     result.innerHTML = '<label for="checkbox-for-' +
       calendarId + '" class="add-to-calendar-checkbox">+ Add to my Calendar</label>';
     result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="checkbox-for-' + calendarId + '" type="checkbox">';
 
-    var generatedCalendars = generateCalendars(params.data);
-
-    Object.keys(generatedCalendars).forEach(function(services) {
-      result.innerHTML += generatedCalendars[services];
+    Object.keys(calendars).forEach(function(services) {
+      result.innerHTML += calendars[services];
     });
 
     // Add Class and ID to div if either one is passed as an option
@@ -136,5 +126,18 @@
     result.id = calendarId;
 
     return result;
+  };
+
+  exports.createCalendar = function(params) {
+    if (!validParams(params)) {
+      console.log('Event details missing.');
+      return;
+    }
+
+    var calendarId = (params.options && params.options.id) ?
+      params.options.id :
+      Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
+
+    return generateMarkup(generateCalendars(params.data), params, calendarId);
   };
 })(this);
