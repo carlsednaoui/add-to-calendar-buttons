@@ -1,13 +1,13 @@
 (function(exports) {
   exports.createCalendar = function(params) {
-    var msInMinutes = 60 * 1000;
+    var MS_IN_MINUTES = 60 * 1000;
 
     var formatTime = function(date) {
       return date.toISOString().replace(/-|:|\.\d+/g, '');
     };
 
     var calculateEndTime = function(event) {
-      return event.end ? formatTime(event.end) : formatTime(new Date(event.start.getTime() + (event.duration * msInMinutes)))
+      return event.end ? formatTime(event.end) : formatTime(new Date(event.start.getTime() + (event.duration * MS_IN_MINUTES)))
     };
 
     var calendarGenerators = {
@@ -29,7 +29,7 @@
       },
 
       yahoo: function(event) {
-        var eventDuration = event.end ? ((event.end.getTime() - event.start.getTime())/ msInMinutes) : event.duration;
+        var eventDuration = event.end ? ((event.end.getTime() - event.start.getTime())/ MS_IN_MINUTES) : event.duration;
         // Yahoo dates are crazy, we need to convert the duration from minutes to hh:mm
         var yahooHourDuration = eventDuration < 600 ? '0' + Math.floor((eventDuration / 60)) : Math.floor((eventDuration / 60));
         var yahooMinuteDuration = eventDuration % 60 < 10 ? '0' + eventDuration % 60 : eventDuration % 60;
@@ -38,7 +38,7 @@
         var href = encodeURI([
           'http://calendar.yahoo.com/?v=60&view=d&type=20',
           '&title=' + (event.title || ''),
-          '&st=' + (formatTime(new Date(event.start - (event.start.getTimezoneOffset() * msInMinutes))) || ''), // Remove timezone from event time
+          '&st=' + (formatTime(new Date(event.start - (event.start.getTimezoneOffset() * MS_IN_MINUTES))) || ''), // Remove timezone from event time
           '&dur=' + (yahooEventDuration || ''),
           '&desc=' + (event.description || ''),
           '&in_loc=' + (event.address || '')
