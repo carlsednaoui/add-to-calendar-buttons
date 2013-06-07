@@ -1,3 +1,35 @@
 label, textarea, input[type=submit] {
-  display: block;
+  display: inline-block;
+}
+
+label {
+  text-align: right;
+}
+
+body {
+  font-family: helvetica;
+  color: #080a34;
+}
+
+header {
+  background: #3e73f8;
+  height: 50px;
+  color: #fdfaff;
+  text-align: center;
+  padding-top: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight:normal;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 20px 0 20px 20px;
+  font-weight:normal;
+}
+
+#calendar-generator {
+  margin: 20px 0 20px 30px;
 }
