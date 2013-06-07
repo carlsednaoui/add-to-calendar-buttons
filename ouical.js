@@ -109,7 +109,7 @@
       (params.data.end !== undefined || params.data.duration !== undefined);
   };
 
-  var generateMarkup = function(calendars, params, calendarId) {
+  var generateMarkup = function(calendars, clazz, calendarId) {
     var result = document.createElement('div');
 
     result.innerHTML = '<label for="checkbox-for-' +
@@ -120,21 +120,22 @@
       result.innerHTML += calendars[services];
     });
 
-    // Add Class and ID to div if either one is passed as an option
-    result.className = 'add-to-calendar' +
-      ((params.options && params.options.class) ? (' ' + params.options.class) : '');
-    result.id = calendarId;
+    result.className = 'add-to-calendar ';
+    if (clazz !== undefined) {
+      result.className += clazz;
+    }
 
+    result.id = calendarId;
     return result;
   };
 
-  var getCalendarId = function(params) {
   var getClass = function(params) {
     if (params.options && params.options.class) {
       return params.options.class;
     }
   };
 
+  var getOrGenerateCalendarId = function(params) {
     return params.options && params.options.id ?
       params.options.id :
       Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
@@ -146,7 +147,8 @@
       return;
     }
 
-    var calendarId = getCalendarId(params);
-    return generateMarkup(generateCalendars(params.data), params, calendarId);
+    return generateMarkup(generateCalendars(params.data),
+                          getClass(params),
+                          getOrGenerateCalendarId(params));
   };
 })(this);
