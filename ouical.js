@@ -94,7 +94,7 @@
     }
   };
 
-  var GENERATORS = function(event) {
+  var generateCalendars = function(event) {
     return {
       google: calendarGenerators.google(event),
       yahoo: calendarGenerators.yahoo(event),
@@ -116,7 +116,7 @@
         calendarId + '" class="add-to-calendar-checkbox">+ Add to my Calendar</label>';
       result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="checkbox-for-' + calendarId + '" type="checkbox">';
 
-      var generatedCalendars = GENERATORS(params.data);
+      var generatedCalendars = generateCalendars(params.data);
 
       Object.keys(generatedCalendars).forEach(function(services) {
         result.innerHTML += generatedCalendars[services];
