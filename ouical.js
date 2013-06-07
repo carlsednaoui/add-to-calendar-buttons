@@ -110,28 +110,25 @@
   };
 
   exports.createCalendar = function(params) {
+    if (!validParams(params)) {
+      console.log('Event details missing.');
+      return;
+    }
+
     var result = document.createElement('div');
     var calendarId = (params.options && params.options.id) ?
       params.options.id :
       Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
 
-    // Make sure we have the necessary event data, such as start time and event duration
-    if (params.data && params.data.start && (params.data.end || params.data.duration)) {
+    result.innerHTML = '<label for="checkbox-for-' +
+      calendarId + '" class="add-to-calendar-checkbox">+ Add to my Calendar</label>';
+    result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="checkbox-for-' + calendarId + '" type="checkbox">';
 
-      result.innerHTML = '<label for="checkbox-for-' +
-        calendarId + '" class="add-to-calendar-checkbox">+ Add to my Calendar</label>';
-      result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="checkbox-for-' + calendarId + '" type="checkbox">';
+    var generatedCalendars = generateCalendars(params.data);
 
-      var generatedCalendars = generateCalendars(params.data);
-
-      Object.keys(generatedCalendars).forEach(function(services) {
-        result.innerHTML += generatedCalendars[services];
-      });
-
-    } else {
-      console.log('Event details missing.');
-      return;
-    }
+    Object.keys(generatedCalendars).forEach(function(services) {
+      result.innerHTML += generatedCalendars[services];
+    });
 
     // Add Class and ID to div if either one is passed as an option
     result.className = 'add-to-calendar' +
