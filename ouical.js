@@ -129,6 +129,12 @@
   };
 
   var getCalendarId = function(params) {
+  var getClass = function(params) {
+    if (params.options && params.options.class) {
+      return params.options.class;
+    }
+  };
+
     return params.options && params.options.id ?
       params.options.id :
       Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
