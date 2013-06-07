@@ -120,9 +120,9 @@
       result.innerHTML += calendars[services];
     });
 
-    result.className = 'add-to-calendar ';
+    result.className = 'add-to-calendar';
     if (clazz !== undefined) {
-      result.className += clazz;
+      result.className += (' ' + clazz);
     }
 
     result.id = calendarId;
