@@ -38,13 +38,15 @@
       // Yahoo dates are crazy, we need to convert the duration from minutes to hh:mm
       var yahooHourDuration = eventDuration < 600 ?
         '0' + Math.floor((eventDuration / 60)) :
-        Math.floor((eventDuration / 60));
+        Math.floor((eventDuration / 60)) + '';
 
       var yahooMinuteDuration = eventDuration % 60 < 10 ?
         '0' + eventDuration % 60 :
-        eventDuration % 60;
+        eventDuration % 60 + '';
 
       var yahooEventDuration = yahooHourDuration + yahooMinuteDuration;
+
+      console.log(yahooEventDuration);
 
       // Remove timezone from event time
       var st = formatTime(new Date(event.start - (event.start.getTimezoneOffset() *
