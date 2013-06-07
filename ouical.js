@@ -46,8 +46,6 @@
 
       var yahooEventDuration = yahooHourDuration + yahooMinuteDuration;
 
-      console.log(yahooEventDuration);
-
       // Remove timezone from event time
       var st = formatTime(new Date(event.start - (event.start.getTimezoneOffset() *
                                                   MS_IN_MINUTES))) || '';
