@@ -8,7 +8,7 @@
   var calculateEndTime = function(event) {
     return event.end ?
       formatTime(event.end) :
-      formatTime(new Date(event.start.getTime() + (event.duration * MS_IN_MINUTES)))
+      formatTime(new Date(event.start.getTime() + (event.duration * MS_IN_MINUTES)));
   };
 
   var calendarGenerators = {
