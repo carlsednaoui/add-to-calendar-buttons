@@ -7,7 +7,9 @@
     };
 
     var calculateEndTime = function(event) {
-      return event.end ? formatTime(event.end) : formatTime(new Date(event.start.getTime() + (event.duration * MS_IN_MINUTES)))
+      return event.end ?
+        formatTime(event.end) :
+        formatTime(new Date(event.start.getTime() + (event.duration * MS_IN_MINUTES)))
     };
 
     var calendarGenerators = {
@@ -25,25 +27,41 @@
           '&location=' + (event.address || ''),
           '&sprop=&sprop=name:'
         ].join(''));
-        return '<a class="icon-google" target="_blank" href="' + href + '">Google Calendar</a>'
+        return '<a class="icon-google" target="_blank" href="' +
+          href + '">Google Calendar</a>';
       },
 
       yahoo: function(event) {
-        var eventDuration = event.end ? ((event.end.getTime() - event.start.getTime())/ MS_IN_MINUTES) : event.duration;
+        var eventDuration = event.end ?
+          ((event.end.getTime() - event.start.getTime())/ MS_IN_MINUTES) :
+          event.duration;
+
         // Yahoo dates are crazy, we need to convert the duration from minutes to hh:mm
-        var yahooHourDuration = eventDuration < 600 ? '0' + Math.floor((eventDuration / 60)) : Math.floor((eventDuration / 60));
-        var yahooMinuteDuration = eventDuration % 60 < 10 ? '0' + eventDuration % 60 : eventDuration % 60;
+        var yahooHourDuration = eventDuration < 600 ?
+          '0' + Math.floor((eventDuration / 60)) :
+          Math.floor((eventDuration / 60));
+
+        var yahooMinuteDuration = eventDuration % 60 < 10 ?
+          '0' + eventDuration % 60 :
+          eventDuration % 60;
+
         var yahooEventDuration = yahooHourDuration + yahooMinuteDuration;
+
+        // Remove timezone from event time
+        var st = formatTime(new Date(event.start - (event.start.getTimezoneOffset() *
+                                                    MS_IN_MINUTES))) || '';
 
         var href = encodeURI([
           'http://calendar.yahoo.com/?v=60&view=d&type=20',
           '&title=' + (event.title || ''),
-          '&st=' + (formatTime(new Date(event.start - (event.start.getTimezoneOffset() * MS_IN_MINUTES))) || ''), // Remove timezone from event time
+          '&st=' + st,
           '&dur=' + (yahooEventDuration || ''),
           '&desc=' + (event.description || ''),
           '&in_loc=' + (event.address || '')
         ].join(''));
-        return '<a class="icon-yahoo" target="_blank" href="' + href + '">Yahoo! Calendar</a>';
+
+        return '<a class="icon-yahoo" target="_blank" href="' +
+          href + '">Yahoo! Calendar</a>';
       },
 
       ics: function(event, eClass, calendarName) {
@@ -63,7 +81,9 @@
             'LOCATION:' + (event.address || ''),
             'END:VEVENT',
             'END:VCALENDAR'].join('\n'));
-        return '<a class="' + eClass + '" target="_blank" href="' + href + '">' + calendarName + ' Calendar</a>';
+
+        return '<a class="' + eClass + '" target="_blank" href="' +
+          href + '">' + calendarName + ' Calendar</a>';
       },
 
       ical: function(event) {
@@ -85,12 +105,15 @@
     };
 
     var result = document.createElement('div');
-    var calendarId = (params.options && params.options.id) ? params.options.id : Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
+    var calendarId = (params.options && params.options.id) ?
+      params.options.id :
+      Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
 
     // Make sure we have the necessary event data, such as start time and event duration
     if (params.data && params.data.start && (params.data.end || params.data.duration)) {
 
-      result.innerHTML = '<label for="checkbox-for-' + calendarId + '" class="add-to-calendar-checkbox">+ Add to my Calendar</label>' ;
+      result.innerHTML = '<label for="checkbox-for-' +
+        calendarId + '" class="add-to-calendar-checkbox">+ Add to my Calendar</label>';
       result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="checkbox-for-' + calendarId + '" type="checkbox">';
 
       var generatedCalendars = GENERATORS(params.data);
@@ -105,7 +128,8 @@
     }
 
     // Add Class and ID to div if either one is passed as an option
-    result.className = 'add-to-calendar' + ((params.options && params.options.class) ? (' ' + params.options.class) : '');
+    result.className = 'add-to-calendar' +
+      ((params.options && params.options.class) ? (' ' + params.options.class) : '');
     result.id = calendarId;
 
     return result;
