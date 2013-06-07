@@ -128,16 +128,19 @@
     return result;
   };
 
+  var getCalendarId = function(params) {
+    return params.options && params.options.id ?
+      params.options.id :
+      Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
+  };
+
   exports.createCalendar = function(params) {
     if (!validParams(params)) {
       console.log('Event details missing.');
       return;
     }
 
-    var calendarId = (params.options && params.options.id) ?
-      params.options.id :
-      Math.floor(Math.random() * 1000000); // Generate a 6-digit random ID
-
+    var calendarId = getCalendarId(params);
     return generateMarkup(generateCalendars(params.data), params, calendarId);
   };
 })(this);
