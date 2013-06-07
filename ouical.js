@@ -6,11 +6,15 @@
       return date.toISOString().replace(/-|:|\.\d+/g, '');
     };
 
-    var GENERATORS = function(event) {
-      var startTime = formatTime(event.start);
-      var endTime = event.end ? formatTime(event.end) : formatTime(new Date(event.start.getTime() + (event.duration * msInMinutes)));
+    var calculateEndTime = function(event) {
+      return event.end ? formatTime(event.end) : formatTime(new Date(event.start.getTime() + (event.duration * msInMinutes)))
+    };
 
-      var google = function(event) {
+    var calendarGenerators = {
+      google: function(event) {
+        var startTime = formatTime(event.start);
+        var endTime = calculateEndTime(event);
+
         var href = encodeURI([
           'https://www.google.com/calendar/render',
           '?action=TEMPLATE',
@@ -21,10 +25,10 @@
           '&location=' + (event.address || ''),
           '&sprop=&sprop=name:'
         ].join(''));
-        return '<a class="icon-google" target="_blank" href="' + href + '">Google Calendar</a>';
-      };
+        return '<a class="icon-google" target="_blank" href="' + href + '">Google Calendar</a>'
+      },
 
-      var yahoo = function(event) {
+      yahoo: function(event) {
         var eventDuration = event.end ? ((event.end.getTime() - event.start.getTime())/ msInMinutes) : event.duration;
         // Yahoo dates are crazy, we need to convert the duration from minutes to hh:mm
         var yahooHourDuration = eventDuration < 600 ? '0' + Math.floor((eventDuration / 60)) : Math.floor((eventDuration / 60));
@@ -40,9 +44,12 @@
           '&in_loc=' + (event.address || '')
         ].join(''));
         return '<a class="icon-yahoo" target="_blank" href="' + href + '">Yahoo! Calendar</a>';
-      };
+      },
 
-      var ics = function(event, eClass, calendarName) {
+      ics: function(event, eClass, calendarName) {
+        var startTime = formatTime(event.start);
+        var endTime = calculateEndTime(event);
+
         var href = encodeURI(
           'data:text/calendar;charset=utf8,' + [
             'BEGIN:VCALENDAR',
@@ -57,21 +64,23 @@
             'END:VEVENT',
             'END:VCALENDAR'].join('\n'));
         return '<a class="' + eClass + '" target="_blank" href="' + href + '">' + calendarName + ' Calendar</a>';
-      };
+      },
 
-      var ical = function(event) {
-        return ics(event, 'icon-ical', 'iCal');
-      };
+      ical: function(event) {
+        return this.ics(event, 'icon-ical', 'iCal');
+      },
 
-      var outlook = function(event) {
-        return ics(event, 'icon-outlook', 'Outlook');
-      };
+      outlook: function(event) {
+        return this.ics(event, 'icon-outlook', 'Outlook');
+      }
+    };
 
+    var GENERATORS = function(event) {
       return {
-        google: google(event),
-        yahoo: yahoo(event),
-        ical: ical(event),
-        outlook: outlook(event)
+        google: calendarGenerators.google(event),
+        yahoo: calendarGenerators.yahoo(event),
+        ical: calendarGenerators.ical(event),
+        outlook: calendarGenerators.outlook(event)
       };
     };
 
