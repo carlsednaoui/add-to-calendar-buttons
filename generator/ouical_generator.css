@@ -1,0 +1,79 @@
+/******************/
+/* General Styles */
+/******************/
+
+body {
+  font-family: helvetica;
+  color: #080a34;
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 600px;
+}
+
+header {
+  background: #3e73f8;
+  height: 50px;
+  color: #fdfaff;
+  text-align: center;
+  padding-top: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight:normal;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 20px 0;
+  font-weight:normal;
+}
+
+/***************/
+/* Form Styles */
+/***************/
+
+form label, textarea, input[type=submit] {
+  display: inline-block;
+  margin-bottom: 2%;
+}
+
+textarea {
+  margin-left: 6px;
+}
+
+form label {
+  text-align: right;
+  width: 25%;
+}
+
+label + input {
+    width: 35%;
+    margin: 0 30% 0 1%;
+}
+
+input[type=submit] {
+  padding: 10px;
+  background-color: #3e73f8;
+  color: #fdfaff;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  display: block;
+  margin: 15px auto;
+}
+
+/******************/
+/* Generated Code */
+/******************/
+
+.add-to-calendar {
+  margin: 20px 0;
+}
+
+.instructions {
+  margin: 10px 0;
+}
