@@ -51,6 +51,16 @@ The only fields that are mandatory are:
 
 [Here is a live example](http://carlsednaoui.github.io/ouical/example.html)
 
+## Looking for Instant Gratification?
+[Copy OuiCal into Chrome's JS console](https://raw.github.com/carlsednaoui/ouical/master/ouical.js) (or whatever browser you're using).
+
+
+Then call this:
+
+    document.getElementsByTagName('body')[0].appendChild(createCalendar({data:{title:"this is the title of my event", start: new Date(), duration: 90}}));
+
+\#winning!
+
 ## Calendar Generator
 Need to generate an add-to-calendar widget on the fly? No problem, [go here](http://carlsednaoui.github.io/ouical/generator/generator.html).
 
