@@ -1,14 +1,20 @@
 # OuiCal
 
-A simple JS script that enables you to add an "add to calendar" button to your events.
+A simple JS library that enables you to add an "add to calendar" button for your upcoming events.
+
+## Inspiration
+
+This project was inspired by [Eventbrite's](http://www.eventbrite.com/) add to calendar feature (which should have been open sourced #justSayin).
+
+## How to use it?
 
 Call 'createCalendar' with your event info, pass in any optional parameters such as a class and/ or id and boom! Insert your add-to-calendar div wherever you'd like.
 
 The only fields that are mandatory are:
 
+  - Event title
   - Start time
-  - End time (or event duration, in minutes)
-  - Event tile
+  - Event duration, in minutes
 
 ## Example
 
@@ -16,7 +22,7 @@ The only fields that are mandatory are:
       options: {
         class: 'my-class',
         
-        // You need to pass an ID. If you don't, one will be generated for you.
+        // You can pass an ID. If you don't, one will be generated for you
         id: 'my-id'
       },
       data: {
@@ -29,8 +35,8 @@ The only fields that are mandatory are:
         // Event duration (IN MINUTES)
         duration: 120,
 
-        // You can also choose to set an end time. 
-        // If an end time is set, this will take precedence over duration.
+        // You can also choose to set an end time
+        // If an end time is set, this will take precedence over duration
         end: new Date('June 15, 2013 23:00'),     
 
         // Event Address
@@ -41,12 +47,12 @@ The only fields that are mandatory are:
       }
     });
 
-    document.querySelector('#place-where-i-want-this-calendar').appendChild(myCalendar);
+    document.querySelector('#place-where-I-want-this-calendar').appendChild(myCalendar);
 
-[Here is the live example](http://carlsednaoui.github.io/ouical/example.html)
+[Here is a live example](http://carlsednaoui.github.io/ouical/example.html)
 
 ## Calendar Generator
-Need to generate an add-to-calendar on the fly? No problem, [go here](http://carlsednaoui.github.io/ouical/generator/generator.html).
+Need to generate an add-to-calendar widget on the fly? No problem, [go here](http://carlsednaoui.github.io/ouical/generator/generator.html).
 
 ## GitHub Project Page
 [Official Project Page](http://carlsednaoui.github.io/ouical/)
