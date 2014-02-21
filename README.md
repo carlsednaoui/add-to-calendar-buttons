@@ -49,7 +49,7 @@ The only fields that are mandatory are:
 
     document.querySelector('#place-where-I-want-this-calendar').appendChild(myCalendar);
 
-[Here is a live example](http://carlsednaoui.github.io/ouical/example.html)
+[Here is a live example](http://carlsednaoui.github.io/add-to-calendar-buttons/example.html)
 
 ## Looking for Instant Gratification?
 [Copy OuiCal into Chrome's JS console](https://raw.github.com/carlsednaoui/ouical/master/ouical.js) (or whatever browser you're using).
