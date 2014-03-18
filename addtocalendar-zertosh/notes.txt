@@ -1,0 +1,54 @@
+How to use:
+  1. Link to either style-icons.css or style-sprite.css, for whatever type of icons you want.
+  2. Include addtocalendar.js
+  3. See code for how to pass parameters.
+    a. class and id are optional, that's for the user to decide.
+    b. all `data` paramaters are optional
+    c. start takes a Date object
+    d. duration is in minutes
+    f. if there is no duration then you can't have an end time, duh.
+
+
+Notes:
+  1. I made it without using any events. Why? Because if I did, then I'd have to give the user some kind of way to unbind the events, otherwise you'd have memory leaks if they remove the element from the DOM without unbinding events.
+  2. How would an interface with events look like?
+    var calender = new AddToCalendar({ ... });
+    calendar.render(); // here you could bind the events
+    document.body.appendChild(calendar.el); // el would be a property that has the HTMLElement
+    calendar.teardown(); // here you'd unbind events if you wanted to remove the calendar from the DOM
+  3. I went without `new`. Why? Because it'd be overkill for this. This isn't a factory, if I were doing events like above, then I'd want a new instance for each add-to-calendar so I could manage the events for each object.
+  4. The JS could be made much nicer, but I don't want to spend more time on it. So, don't think this is the end-all-be-all way to make widgets. This is just a small example. You should still look at other peoples code.
+  5. Notice that the HTML is semantic. No extra elements that don't need to be there. Your code was full of useless elements that were only used for presentation, BAD BAD BAD!
+
+
+
+=================
+
+woops, forgot to mention you can also pass an array of strings called `services` with only the services you want, if you don't pass it, then all the services get added.
+
+=================
+
+  sigh. i'm sorry, but this is *not* remotely close to the best practices for injecting widgets into a page.
+
+* why target the <div> via a class? why not have a function that returns an HTMLElement, and then the user decides where they want to put it? from the user's perspective it should work like this:
+var calEl = new AddToCalendar({
+   class: 'some-class-to-add', // or maybe id: 'my-cal'
+   services: [ 'yahoo', 'google', 'outlook' ],
+   data: {
+     event: 'someevent',
+     time: '12:30pm',
+     date: '2013-05-01'
+   }
+});
+// calEl should be an HTMLElement
+$('#placewhereiwantmycal').append(calEl);
+// this isn't written in stone, there are other approches - this is one.
+
+* your code is littered with magic numbers (see def #3).
+
+* embedded HTML is horrible. if you have to embed then make more general templates.
+
+* they way you're handling the click event is awful.
+
+
+sorry buddy, you should really look at other code. these tips aren't me being capricious there are technical  reasons for each one and that's why that's the accepted way of adding widgets.

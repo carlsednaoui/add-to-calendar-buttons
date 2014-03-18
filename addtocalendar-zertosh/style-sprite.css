@@ -1,0 +1,48 @@
+/* open/close without js */
+.add-to-calendar-toggle {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.add-to-calendar-toggle ~ a {
+  display: none;
+}
+.add-to-calendar-toggle:checked ~ a {
+  display: block;
+}
+
+/* less ugly */
+.add-to-calendar-toggle ~ a {
+  text-decoration: none;
+  margin-left: 1em;
+}
+
+.add-to-calendar-toggle ~ a:before {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-image: url('calendar_sprite.png');
+  margin-right: .5em;
+  content: ' ';
+}
+
+.icon-plus:before {
+  content: '+ ';
+}
+
+.icon-calendar:before {
+  background-position: -68px 0;
+}
+
+.icon-calendar-2:before {
+  width: 20px;
+  background-position: -16px 0;
+}
+
+.icon-yahoo:before {
+  background-position: -36px +4px;
+}
+
+.icon-google:before {
+  background-position: -52px 0;
+}

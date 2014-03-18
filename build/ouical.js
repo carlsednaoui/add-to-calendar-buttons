@@ -1,1 +1,1 @@
-console.log('boom baz bat');
+console.log('foo');

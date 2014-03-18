@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style-sprite.css">
+<script src="addtocalendar.js"></script>
+<title></title>
+<script>
+  window.onload = function() {
+    var calendarEl = addToCalendar({
+      class: 'mycalendar',
+      id: 'calendar',
+      data: {
+        title: 'start tumblr',
+        start: new Date('May 2 2013 10:30:00'),
+        duration: 120,
+        address: '35 E 21st New York',
+        description: 'hopefully not work with php, js4life'
+      },
+      // services: ['google', 'yahoo']
+    });
+    document.body.appendChild(calendarEl);
+  };
+</script>
+</head>
+<body>
+</body>
+</html>

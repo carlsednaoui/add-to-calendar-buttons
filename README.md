@@ -2,70 +2,107 @@
 
 A simple JS library that enables you to add an "add to calendar" button for your upcoming events.
 
-## Inspiration
+### Installation
+
+Download the script from the [build](build) folder and add it to your page.
+
+### Usage
+
+#### Basic
+
+// Event title
+title: 'Get on the front page of HN'
+
+// Event start date
+start: new Date('June 15, 2013 19:00')
+
+// Event duration (IN MINUTES)
+duration: 120
+
+// You can also choose to set an end time
+// If an end time is set, this will take precedence over duration
+end: new Date('June 15, 2013 23:00')
+
+// Event Address
+address: 'The internet'
+
+// Event Description
+description: 'Get on the front page of HN, then prepare for world domination.'
+
+##### Example
+
+```js
+ouical.links({
+  title: 'Get on the front page of HN'
+, start: new Date('June 15, 2013 19:00')
+, end: new Date('June 15, 2013 23:00')
+, address: 'The internet'
+, description: 'Get on the front page of HN'
+});
+```
+
+Returns    
+```js
+{
+  gcal: google-calendar-link
+, ical: ical-link
+, yahoo: yahoo-mail-link
+}
+```
+
+
+#### Intermediate
+
+By default it will return a `<ul>` with `<li>`'s. You can also pass an underscore template.
+
+// Template
+Takes a string. Pass an underscore template, or the ID of an element that contains an underscore template.
+
+##### Example
+
+```js
+ouical.html({
+  title: 'Get on the front page of HN'
+, start: new Date('June 15, 2013 19:00')
+, end: new Date('June 15, 2013 23:00')
+, address: 'The internet'
+, description: 'Get on the front page of HN'
+, template: '#calendar-invite-template'
+})
+```
+
+Returns    
+```html
+<ul>
+  <li>link1</li>
+  <li>link2</li>
+  <li>link3</li>
+</ul>
+```
+
+#### Advanced
+
+// Element
+This is the element to which you want to bind ouical.
+
+```js
+ouical.html({
+  title: 'Get on the front page of HN'
+, start: new Date('June 15, 2013 19:00')
+, end: new Date('June 15, 2013 23:00')
+, address: 'The internet'
+, description: 'Get on the front page of HN'
+, template: '#calendar-invite-template'
+, element:  '#calendar-invite-button'
+})
+```
+
+### Libraries to consider
+
+[http://underscorejs.org/#template](http://underscorejs.org/#template)
+[http://momentjs.com/](http://momentjs.com/)
+
+
+### Inspiration
 
 This project was inspired by [Eventbrite's](http://www.eventbrite.com/) add to calendar feature (which should have been open sourced #justSayin).
-
-## How to use it?
-
-Call 'createCalendar' with your event info, pass in any optional parameters such as a class and/ or id and boom! Insert your add-to-calendar div wherever you'd like.
-
-The only fields that are mandatory are:
-
-  - Event title
-  - Start time
-  - Event duration, in minutes
-
-## Example
-
-    var myCalendar = createCalendar({
-      options: {
-        class: 'my-class',
-        
-        // You can pass an ID. If you don't, one will be generated for you
-        id: 'my-id'
-      },
-      data: {
-        // Event title
-        title: 'Get on the front page of HN',
-
-        // Event start date
-        start: new Date('June 15, 2013 19:00'),
-        
-        // Event duration (IN MINUTES)
-        duration: 120,
-
-        // You can also choose to set an end time
-        // If an end time is set, this will take precedence over duration
-        end: new Date('June 15, 2013 23:00'),     
-
-        // Event Address
-        address: 'The internet',
-
-        // Event Description
-        description: 'Get on the front page of HN, then prepare for world domination.'
-      }
-    });
-
-    document.querySelector('#place-where-I-want-this-calendar').appendChild(myCalendar);
-
-[Here is a live example](http://carlsednaoui.github.io/add-to-calendar-buttons/example.html)
-
-## Looking for Instant Gratification?
-[Copy OuiCal into Chrome's JS console](https://raw.github.com/carlsednaoui/ouical/master/ouical.js) (or whatever browser you're using).
-
-
-Then call this:
-
-    document.getElementsByTagName('body')[0].appendChild(createCalendar({data:{title:"this is the title of my event", start: new Date(), duration: 90}}));
-
-\#winning!
-
-## Calendar Generator
-Need to generate an add-to-calendar widget on the fly? No problem, [go here](http://carlsednaoui.github.io/ouical/generator/generator.html).
-
-## GitHub Project Page
-[Official Project Page](http://carlsednaoui.github.io/ouical/)
-
-## License
-[MIT](http://opensource.org/licenses/MIT)
