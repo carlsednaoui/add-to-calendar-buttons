@@ -10,23 +10,23 @@ Download the script from the [build](build) folder and add it to your page.
 
 #### Basic
 
-// Event title
+// Event title    
 title: 'Get on the front page of HN'
 
-// Event start date
+// Event start date    
 start: new Date('June 15, 2013 19:00')
 
-// Event duration (IN MINUTES)
+// Event duration (IN MINUTES)    
 duration: 120
 
-// You can also choose to set an end time
-// If an end time is set, this will take precedence over duration
+// You can also choose to set an end time    
+// If an end time is set, this will take precedence over duration    
 end: new Date('June 15, 2013 23:00')
 
-// Event Address
+// Event Address    
 address: 'The internet'
 
-// Event Description
+// Event Description    
 description: 'Get on the front page of HN, then prepare for world domination.'
 
 ##### Example
@@ -55,7 +55,7 @@ Returns
 
 By default it will return a `<ul>` with `<li>`'s. You can also pass an underscore template.
 
-// Template
+// Template    
 Takes a string. Pass an underscore template, or the ID of an element that contains an underscore template.
 
 ##### Example
@@ -82,7 +82,7 @@ Returns
 
 #### Advanced
 
-// Element
+// Element    
 This is the element to which you want to bind ouical.
 
 ```js
