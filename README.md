@@ -99,8 +99,8 @@ ouical.html({
 
 ### Libraries to consider
 
-[http://underscorejs.org/#template](http://underscorejs.org/#template)
-[http://momentjs.com/](http://momentjs.com/)
+- [http://underscorejs.org/#template](http://underscorejs.org/#template)
+- [http://momentjs.com/](http://momentjs.com/)
 
 
 ### Inspiration
