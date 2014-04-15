@@ -16,9 +16,12 @@
     "url": "https://github.com/carlsednaoui/add-to-calendar-buttons/issues"
   },
   "homepage": "https://github.com/carlsednaoui/add-to-calendar-buttons",
-  "dependencies": {
+  "devDependencies": {
     "gulp": "~3.5.5",
     "gulp-coffee": "~1.4.1",
-    "gulp-watch": "~0.5.2"
+    "gulp-watch": "~0.5.2",
+    "mocha": "^1.18.2",
+    "should": "^3.3.0",
+    "coffee-script": "^1.7.1"
   }
 }

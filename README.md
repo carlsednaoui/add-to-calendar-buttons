@@ -34,13 +34,18 @@ Event Description
 ##### Example
 
 ```js
-ouical.links({
+ouical = new Ouical({
   title: 'Get on the front page of HN'
 , start: new Date('June 15, 2013 19:00')
 , end: new Date('June 15, 2013 23:00')
 , address: 'The internet'
 , description: 'Get on the front page of HN'
 });
+
+ouical.links()
+ouical.html(template: '#wow')
+ouical.component(template: '#wow', el: '#button')
+
 ```
 
 Returns    

@@ -1,10 +1,10 @@
-console.log('foo');
+class Ouical
+  constructor: (opts = {}) ->
+    @title = opts.title || ''
+    @start = opts.start
+    @duration = opts.duration
+    @end = opts.end
+    @address = opts.address
+    @description = opts.description || ''
 
-
-# pass an el to fn
-# fn generates links
-# fn returns 1 div with 4 el
-#   one for each service
-#     options:
-#       select services
-#       add our styles
+module.exports = Ouical
