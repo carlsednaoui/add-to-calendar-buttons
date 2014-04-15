@@ -8,26 +8,28 @@ Download the script from the [build](build) folder and add it to your page.
 
 ### Usage
 
+#### Options
+Event title    
+`title: 'Get on the front page of HN'`
+
+Event start date    
+`start: new Date('June 15, 2013 19:00')`
+
+Event duration (IN MINUTES)    
+`duration: 120`
+
+You can also choose to set an end time    
+If an end time is set, this will take precedence over duration    
+`end: new Date('June 15, 2013 23:00')`
+
+Event Address    
+`address: 'The internet'`
+
+Event Description    
+`description: 'Get on the front page of HN, then prepare for world domination.'`
+
+
 #### Basic
-
-// Event title    
-title: 'Get on the front page of HN'
-
-// Event start date    
-start: new Date('June 15, 2013 19:00')
-
-// Event duration (IN MINUTES)    
-duration: 120
-
-// You can also choose to set an end time    
-// If an end time is set, this will take precedence over duration    
-end: new Date('June 15, 2013 23:00')
-
-// Event Address    
-address: 'The internet'
-
-// Event Description    
-description: 'Get on the front page of HN, then prepare for world domination.'
 
 ##### Example
 
