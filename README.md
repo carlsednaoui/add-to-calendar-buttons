@@ -86,7 +86,7 @@ Returns
 This is the element to which you want to bind ouical.
 
 ```js
-ouical.html({
+ouical.component({
   title: 'Get on the front page of HN'
 , start: new Date('June 15, 2013 19:00')
 , end: new Date('June 15, 2013 23:00')
