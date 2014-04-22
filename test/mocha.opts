@@ -1,2 +1,3 @@
 --reporter spec
+--require test/support/helper
 --compilers coffee:coffee-script/register

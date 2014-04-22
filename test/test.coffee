@@ -1,6 +1,3 @@
-should = require 'should'
-Ouical = require '../src/ouical'
-
 describe 'basic', ->
 
   it 'should work', ->
@@ -24,4 +21,3 @@ describe 'basic', ->
     ouical.end.should.equal('test end')
     ouical.address.should.equal('test address')
     ouical.description.should.equal('test description')
-
