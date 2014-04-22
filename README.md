@@ -1,5 +1,5 @@
 # OuiCal
-[![travis](https://travis-ci.org/carlsednaoui/add-to-calendar-buttons.svg?branch=refactor)](https://travis-ci.org/carlsednaoui/add-to-calendar-buttons)
+[![travis](https://travis-ci.org/carlsednaoui/add-to-calendar-buttons.svg?branch=refactor)](https://travis-ci.org/carlsednaoui/add-to-calendar-buttons) [![Coverage Status](https://coveralls.io/repos/carlsednaoui/add-to-calendar-buttons/badge.png)](https://coveralls.io/r/carlsednaoui/add-to-calendar-buttons)
 
 A simple JS library that enables you to add an "add to calendar" button for your upcoming events.
 
