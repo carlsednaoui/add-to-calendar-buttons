@@ -12,12 +12,17 @@ class Ouical
       @end = moment(opts.end, 'MM-DD-YYYY hh:mm')
     else
       duration = moment.duration(opts.duration, 'minutes')
-      @end = @start.add(duration)
+      @end = moment(@start).add(duration)
 
     # handle timezone
     if opts.zone
+      console.log @start.format()
       @start = @start.zone(opts.zone)
+      console.log @start.format()
+
       @end = @end.zone(opts.zone)
+
+      
 
 
   # links: ->

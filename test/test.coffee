@@ -26,6 +26,7 @@ describe 'basic', ->
       start: '1/1/2014 00:00'
       duration: 30
 
+    ouical.start.format('MM-DD-YYYY hh:mm').should.equal('01-01-2014 12:00')
     ouical.end.format('MM-DD-YYYY hh:mm').should.equal('01-01-2014 12:30')
 
 
