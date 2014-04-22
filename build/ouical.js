@@ -1,4 +1,6 @@
-var Ouical;
+var Ouical, moment;
+
+moment = require('moment');
 
 Ouical = (function() {
   function Ouical(opts) {
@@ -12,6 +14,8 @@ Ouical = (function() {
     this.address = opts.address;
     this.description = opts.description || '';
   }
+
+  Ouical.prototype.links = function() {};
 
   return Ouical;
 
