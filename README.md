@@ -1,4 +1,5 @@
 # OuiCal
+[![travis](https//:travis-ci.org/carlsednaoui/ouical.svg?branch=refactor)](https//:travis-ci.org/carlsednaoui/ouical)
 
 A simple JS library that enables you to add an "add to calendar" button for your upcoming events.
 
