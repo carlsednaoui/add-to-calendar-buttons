@@ -6,18 +6,33 @@ describe 'basic', ->
     ouical.description.should.be.empty
 
   it 'should accept params', ->
-    ouical = new Ouical(
+    ouical = new Ouical
       title: 'test title'
-      start: 'test start'
-      duration: 'test duration'
-      end: 'test end'
+      start: '1/1/2014 00:00'
+      duration: 30
+      end: '1/2/2014 00:00'
       address: 'test address'
       description: 'test description'
-    )
 
     ouical.title.should.equal('test title')
-    ouical.start.should.equal('test start')
-    ouical.duration.should.equal('test duration')
-    ouical.end.should.equal('test end')
+    ouical.start.format().should.equal('2014-01-01T00:00:00-05:00')
+    should.not.exist(ouical.duration)
+    ouical.end.format().should.equal('2014-01-02T00:00:00-05:00')
     ouical.address.should.equal('test address')
     ouical.description.should.equal('test description')
+
+  it 'should calculate endTime from startTime and duration', ->
+    ouical = new Ouical
+      start: '1/1/2014 00:00'
+      duration: 30
+
+    ouical.end.format().should.equal('2014-01-01T00:30:00-05:00')
+
+
+  it.skip 'should handle timezones when passed', ->
+    ouical = new Ouical
+      start: '1/1/2014 00:00'
+      duration: 30
+      zone: '-07:00'
+
+    ouical.end.format().should.equal('2014-01-01T00:30:00-07:00')

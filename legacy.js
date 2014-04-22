@@ -1,17 +1,20 @@
 ;(function(exports) {
   var MS_IN_MINUTES = 60 * 1000;
 
-  
+
+  // will get replaced by moment.js
   var formatTime = function(date) {
     return date.toISOString().replace(/-|:|\.\d+/g, '');
   };
 
+  // moment.js will help tons
   var calculateEndTime = function(event) {
     return event.end ?
       formatTime(event.end) :
       formatTime(new Date(event.start.getTime() + (event.duration * MS_IN_MINUTES)));
   };
 
+  // meat of the project!
   var calendarGenerators = {
     google: function(event) {
       var startTime = formatTime(event.start);
