@@ -15,9 +15,9 @@ describe 'basic', ->
       description: 'test description'
 
     ouical.title.should.equal('test title')
-    ouical.start.format().should.equal('2014-01-01T00:00:00-05:00')
+    ouical.start.format('MM-DD-YYYY hh:mm').should.equal('01-01-2014 12:00')
     should.not.exist(ouical.duration)
-    ouical.end.format().should.equal('2014-01-02T00:00:00-05:00')
+    ouical.end.format('MM-DD-YYYY hh:mm').should.equal('01-02-2014 12:00')
     ouical.address.should.equal('test address')
     ouical.description.should.equal('test description')
 
@@ -26,7 +26,7 @@ describe 'basic', ->
       start: '1/1/2014 00:00'
       duration: 30
 
-    ouical.end.format().should.equal('2014-01-01T00:30:00-05:00')
+    ouical.end.format('MM-DD-YYYY hh:mm').should.equal('01-01-2014 12:30')
 
 
   it.skip 'should handle timezones when passed', ->

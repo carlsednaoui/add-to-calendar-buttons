@@ -3,12 +3,12 @@ moment = require 'moment'
 class Ouical
   constructor: (opts = {}) ->
     @title = opts.title || ''
-    @start = moment(opts.start, 'MM/DD/YYYY hh:mm')
+    @start = moment(opts.start, 'MM-DD-YYYY hh:mm')
     @address = opts.address
     @description = opts.description || ''
 
     if opts.end
-      @end = moment(opts.end, 'MM/DD/YYYY hh:mm')
+      @end = moment(opts.end, 'MM-DD-YYYY hh:mm')
     else
       duration = moment.duration(opts.duration, 'minutes')
       @end = @start.add(duration)
