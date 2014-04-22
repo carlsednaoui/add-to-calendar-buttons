@@ -4,7 +4,7 @@
   "description": "Easily add a \"add to calendar\" button to your websites. This JavaScript library supports Google Calendar, iCal, Outlook and Yahoo Calendar.",
   "main": "ouical.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
