@@ -36,4 +36,4 @@ describe 'basic', ->
       duration: 30
       zone: '-07:00'
 
-    ouical.end.format().should.equal('2013-12-31T22:30:00-07:00')
+    ouical.end.format().should.equal('2013-12-31T17:30:00-07:00')

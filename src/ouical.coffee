@@ -7,20 +7,17 @@ class Ouical
     @address = opts.address
     @description = opts.description || ''
 
+    # handle timezone
+    if opts.zone
+      @start = moment(opts.start, 'MM-DD-YYYY hh:mm Z').zone(opts.zone)
+      @end = moment(opts.end, 'MM-DD-YYYY hh:mm Z').zone(opts.zone)
+
     # calculate @end via opts.duration
     if opts.end
       @end = moment(opts.end, 'MM-DD-YYYY hh:mm')
     else
       duration = moment.duration(opts.duration, 'minutes')
       @end = moment(@start).add(duration)
-
-    # handle timezone
-    if opts.zone
-      console.log @start.format()
-      @start = @start.zone(opts.zone)
-      console.log @start.format()
-
-      @end = @end.zone(opts.zone)
 
       
 
