@@ -7,18 +7,17 @@ class Ouical
     @address = opts.address
     @description = opts.description || ''
 
+    # calculate @end via opts.duration
     if opts.end
       @end = moment(opts.end, 'MM-DD-YYYY hh:mm')
     else
       duration = moment.duration(opts.duration, 'minutes')
       @end = @start.add(duration)
 
+    # handle timezone
     if opts.zone
       @start = @start.zone(opts.zone)
       @end = @end.zone(opts.zone)
-
-    #TODO: Figure out timezone handling
-
 
 
   # links: ->

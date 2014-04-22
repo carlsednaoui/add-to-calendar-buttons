@@ -29,10 +29,10 @@ describe 'basic', ->
     ouical.end.format('MM-DD-YYYY hh:mm').should.equal('01-01-2014 12:30')
 
 
-  it.skip 'should handle timezones when passed', ->
+  it 'should handle timezones when passed', ->
     ouical = new Ouical
       start: '1/1/2014 00:00'
       duration: 30
       zone: '-07:00'
 
-    ouical.end.format().should.equal('2014-01-01T00:30:00-07:00')
+    ouical.end.format().should.equal('2013-12-31T22:30:00-07:00')
