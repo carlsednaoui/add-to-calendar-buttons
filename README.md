@@ -106,6 +106,7 @@ ouical.component({
 
 ### Libraries to consider
 
+- [http://chaijs.com/guide/styles/#should](http://chaijs.com/guide/styles/#should)
 - [http://underscorejs.org/#template](http://underscorejs.org/#template)
 - [http://momentjs.com/](http://momentjs.com/)
 
