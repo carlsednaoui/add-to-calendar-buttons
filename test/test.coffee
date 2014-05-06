@@ -38,7 +38,6 @@ describe 'basic', ->
 
   it 'should return a list of links', ->
     ouical = new Ouical(mock)
-    console.log ouical.links().ics
     ouical.links().should.be.an('object')
 
   it 'should check google output', ->
@@ -49,5 +48,6 @@ describe 'basic', ->
     ouical = new Ouical(mock)
     ouical.links().yahoo.should.equal('http://calendar.yahoo.com/?v=60&view=d&type=20&title=test%20title&st=20140101T130000Z&dur=1620&desc=test%20description&in_loc=test%20address')
 
-  it.skip 'should check ics output', ->
+  it 'should check ics output', ->
     ouical = new Ouical(mock)
+    ouical.links().ics.should.equal('data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:1388599200000%0ADTEND:1388696400000%0ASUMMARY:test%20title%0ADESCRIPTION:test%20description%0ALOCATION:test%20address%0AEND:VEVENT%0AEND:VCALENDAR')
