@@ -20,7 +20,6 @@
   "homepage": "https://github.com/carlsednaoui/add-to-calendar-buttons",
   "devDependencies": {
     "gulp": "~3.5.5",
-    "gulp-coffee": "~1.4.1",
     "gulp-watch": "~0.5.2",
     "mocha": "^1.18.2",
     "coffee-script": "^1.7.1",
@@ -28,6 +27,9 @@
     "istanbul": "^0.2.7",
     "mocha-lcov-reporter": "0.0.1",
     "coveralls": "^2.10.0",
-    "moment": "^2.6.0"
+    "moment": "^2.6.0",
+    "vinyl-source-stream": "^0.1.1",
+    "coffeeify": "^0.6.0",
+    "uglifyify": "^2.1.1"
   }
 }
