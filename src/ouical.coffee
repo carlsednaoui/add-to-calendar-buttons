@@ -25,7 +25,8 @@ class Ouical
       "https://www.google.com/calendar/render" +
       "?action=TEMPLATE" +
       "&text=#{@title}" +
-      "&dates=#{@start.format('YYYYMMDDTHHmmss')}Z/#{@end.format('YYYYMMDDTHHmmss')}Z" +
+      "&dates=#{@start.format('YYYYMMDDTHHmmss')}Z/" +
+      "#{@end.format('YYYYMMDDTHHmmss')}Z" +
       "&details=#{@description}" +
       "&location=#{@address}" +
       "&sprop=&sprop=name:"
