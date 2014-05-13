@@ -1,4 +1,6 @@
+path = require 'path'
+
 describe 'browser', ->
 
-  it 'should work', ->
-    driver.get 'http://github.com'
+  it 'loads a page', (done) ->
+    driver.get("file://#{path.resolve('example/index.html')}").then(done)

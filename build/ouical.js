@@ -2525,7 +2525,7 @@ Ouical = (function() {
   };
 
   googleGenerator = function() {
-    return encodeURI("https://www.google.com/calendar/render" + "?action=TEMPLATE" + ("&text=" + this.title) + ("&dates=" + (this.start.format('YYYYMMDDTHHmmss')) + "Z/" + (this.end.format('YYYYMMDDTHHmmss')) + "Z") + ("&details=" + this.description) + ("&location=" + this.address) + "&sprop=&sprop=name:");
+    return encodeURI("https://www.google.com/calendar/render" + "?action=TEMPLATE" + ("&text=" + this.title) + ("&dates=" + (this.start.format('YYYYMMDDTHHmmss')) + "Z/") + ("" + (this.end.format('YYYYMMDDTHHmmss')) + "Z") + ("&details=" + this.description) + ("&location=" + this.address) + "&sprop=&sprop=name:");
   };
 
   yahooGenerator = function() {
