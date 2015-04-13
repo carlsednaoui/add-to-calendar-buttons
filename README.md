@@ -62,7 +62,7 @@ Then call this:
 \#winning!
 
 ## Calendar Generator
-Need to generate an add-to-calendar widget on the fly? No problem, [go here](http://carlsednaoui.github.io/ouical/generator/generator.html).
+Need to generate an add-to-calendar widget on the fly? No problem, [go here](http://carlsednaoui.github.io/add-to-calendar-buttons/generator/generator.html).
 
 ## GitHub Project Page
 [Official Project Page](http://carlsednaoui.github.io/ouical/)
