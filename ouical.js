@@ -78,6 +78,7 @@
           'SUMMARY:' + (event.title || ''),
           'DESCRIPTION:' + (event.description || ''),
           'LOCATION:' + (event.address || ''),
+          'UID:' + (event.id || '') + '-' + document.URL,
           'END:VEVENT',
           'END:VCALENDAR'].join('\n'));
 
@@ -165,8 +166,9 @@
       return;
     }
 
+    params.data.id = params.data.id || getOrGenerateCalendarId(params);
     return generateMarkup(generateCalendars(params.data),
                           getClass(params),
-                          getOrGenerateCalendarId(params));
+                          params.data.id);
   };
 })(this);
