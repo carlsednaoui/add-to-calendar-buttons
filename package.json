@@ -1,0 +1,30 @@
+{
+  "name": "add-to-calendar-buttons",
+  "version": "1.0.0",
+  "description": "Easily add a \"add to calendar\" button to your websites. This JavaScript library supports Google Calendar, iCal, Outlook and Yahoo Calendar.",
+  "main": "ouical.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xtina-starr/add-to-calendar-buttons.git"
+  },
+  "keywords": [
+    "calender",
+    "integration",
+    "google",
+    "outlook",
+    "yahoo",
+    "ical",
+    "calendar",
+    "calendar",
+    "events"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xtina-starr/add-to-calendar-buttons/issues"
+  },
+  "homepage": "https://github.com/xtina-starr/add-to-calendar-buttons#readme"
+}
