@@ -118,7 +118,7 @@
       "#add-to-calendar-checkbox-label { cursor:pointer }"+
       ".add-to-calendar-checkbox~a { display:none }"+
       ".add-to-calendar-checkbox:checked~a { display:block; width:150px; margin-left:20px }"+
-      "input[type=checkbox].add-to-calendar-checkbox { position:absolute; top:-9999px; left:-9999px }"+
+      "input[type=checkbox].add-to-calendar-checkbox { position:absolute; left:-9999px }"+
       ".add-to-calendar-checkbox~a:before { width:16px; height:16px; display:inline-block; background-image:url("+iconImage+"); margin-right:.5em; content:' ' }"+
       ".icon-ical:before { background-position:-68px 0 }"+
       ".icon-outlook:before { }"+
