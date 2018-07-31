@@ -59,7 +59,7 @@
         '&in_loc=' + (event.address || '')
       ].join(''));
 
-      return '<a class="icon-yahoo" target="_blank" href="' +
+      return '<a class="icon-yahoo" href="' +
         href + '">Yahoo! Calendar</a>';
     },
 
