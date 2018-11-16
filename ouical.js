@@ -27,7 +27,7 @@
         '&sprop=&sprop=name:'
       ].join(''));
       return '<a class="icon-google" target="_blank" href="' +
-        href + '">Google Calendar</a>';
+        href + '">Google Calendar' + event.uniqueInfo + '</a>';
     },
 
     yahoo: function(event) {
@@ -60,7 +60,7 @@
       ].join(''));
 
       return '<a class="icon-yahoo" target="_blank" href="' +
-        href + '">Yahoo! Calendar</a>';
+        href + '">Yahoo! Calendar' + event.uniqueInfo + '</a>';
     },
 
     ics: function(event, eClass, calendarName) {
@@ -82,7 +82,7 @@
           'END:VCALENDAR'].join('\n'));
 
       return '<a class="' + eClass + '" target="_blank" href="' +
-        href + '">' + calendarName + ' Calendar</a>';
+        href + '">' + calendarName + ' Calendar' + event.uniqueInfo + '</a>';
     },
 
     ical: function(event) {
@@ -95,6 +95,7 @@
   };
 
   var generateCalendars = function(event) {
+    event.uniqueInfo = '<span class="screen-readers">for ' + event.title + ' on ' + event.start +'</span>';
     return {
       google: calendarGenerators.google(event),
       yahoo: calendarGenerators.yahoo(event),
