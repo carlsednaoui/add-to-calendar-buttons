@@ -1,45 +1,56 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <script src="ouical.js"></script>
     <link rel="stylesheet" href="main.css">
-    <title>OuiCal Example</title>
+    <style>
+    	html, body {
+    		font-family:sans-serif;
+    	}
+    </style>
+    <title>Add2Cal Example</title>
   </head>
 
   <body>
-    <div class="new-cal"></div>
-    <div class="new-cal2"></div>
-  <script>
-      var myCalendar = createCalendar({
-        options: {
-          class: 'my-class',
-          id: 'my-id'                               // You need to pass an ID. If you don't, one will be generated for you.
-        },
-        data: {
-          title: 'Get on the front page of HN',     // Event title
-          start: new Date('June 15, 2013 19:00'),   // Event start date
-          duration: 120,                            // Event duration (IN MINUTES)
-          end: new Date('June 15, 2013 23:00'),     // You can also choose to set an end time.
-                                                    // If an end time is set, this will take precedence over duration
-          address: 'The internet',
-          description: 'Get on the front page of HN, then prepare for world domination.'
-        }
-      }),
-      myCalendar2 = createCalendar({
-        options: {
-          class: 'my-class'                         // Notice how this one does not have a preset ID
-        },
-        data: {
-          title: 'Go to the gym',
-          start: new Date('June 15, 2013 17:00'),
-          duration: 60,
-          address: 'Tough Boys Gym',
-          description: 'Work them biceps out.'
-        }
-      });
-
-      document.querySelector('.new-cal').appendChild(myCalendar);
-      document.querySelector('.new-cal2').appendChild(myCalendar2);
-  </script>
+    <h1>OUI Add to Calendar</h1>
+    <div class="new-cal">
+    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+    <div class="new-cal2">
+    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+		<script>
+				var myCalendar = createCalendar({
+					options: {
+						class: 'my-class',
+						id: 'my-id'                               // You need to pass an ID. If you don't, one will be generated for you.
+					},
+					data: {
+						title: 'Get on the front page of HN',     // Event title
+						start: new Date('June 15, 2013 19:00'),   // Event start date
+						duration: 120,                            // Event duration (IN MINUTES)
+						end: new Date('June 15, 2013 23:00'),     // You can also choose to set an end time.
+																											// If an end time is set, this will take precedence over duration
+						address: 'The internet',
+						description: 'Get on the front page of HN, then prepare for world domination.'
+					}
+				}),
+				myCalendar2 = createCalendar({
+					options: {
+						class: 'my-class'                         // Notice how this one does not have a preset ID
+					},
+					data: {
+						title: 'Go to the gym',
+						start: new Date('June 15, 2013 17:00'),
+						duration: 60,
+						address: 'Tough Boys Gym',
+						description: 'Work them biceps out.'
+					}
+				});
+	
+				document.querySelector('.new-cal').appendChild(myCalendar);
+				document.querySelector('.new-cal2').appendChild(myCalendar2);
+		</script>
   </body>
 </html>
