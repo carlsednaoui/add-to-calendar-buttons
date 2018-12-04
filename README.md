@@ -54,8 +54,8 @@ The only fields that are mandatory are:
 
 ### Method 2
 	
-	Write your events data in several hidden HTML tags with the right classnames, and wrap them in a div. Then call 'createCalendar' with the outer div and boom! The calendar is appended to your wrapping div.
-	The only fields that are mandatory are:
+Write your events data in several hidden HTML tags with the right classnames, and wrap them in a div. Then call 'createCalendar' with the outer div and boom! The calendar is appended to your wrapping div.
+The only fields that are mandatory are:
 
   	- Event title
   	- Start time
