@@ -1,3 +1,11 @@
+.add-to-calendar > * {
+	display:none;
+}
+
+.add-to-calendar > .add-to-calendar-wrapper {
+	display:block;
+}
+
 .add-to-calendar-label {
   cursor: pointer;
 }
@@ -50,7 +58,7 @@ input[type=checkbox].add-to-calendar-checkbox {
     prettify
 -------------------- */
 
-.add-to-calendar {
+.add-to-calendar-wrapper {
 	font-family:sans-serif;
 	margin: 1em 0;
 	position:relative;
