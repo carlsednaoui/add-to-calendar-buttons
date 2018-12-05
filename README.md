@@ -1,4 +1,4 @@
-# OuiCal
+# OuiCal2
 
 A simple JS library that enables you to add an "add to calendar" button for your upcoming events.
 
@@ -53,29 +53,29 @@ The only fields that are mandatory are:
     document.querySelector('#place-where-I-want-this-calendar').appendChild(myCalendar);
 
 ### Method 2
-	
+  
 Write your events data in several hidden HTML tags with the right classnames, and wrap them in a div. Then call 'createCalendar' with the outer div and boom! The calendar is appended to your wrapping div.
 The only fields that are mandatory are:
 
-  	- Event title
-  	- Start time
-  	- Event duration, in minutes, or end time
-	
-	
-#### Example	
+  - Event title
+  - Start time
+  - Event duration, in minutes
+  
+  
+#### Example  
 
-		<div title="Add to Calendar" class="add-to-calendar">
-			<span class="start">12/18/2018 08:00 AM</span>
-			<span class="end">12/18/2018 10:00 AM</span>
-			<span class="timezone">America/Los_Angeles</span>
-			<span class="title">Summary of the event</span>
-			<span class="description">Description of the event</span>
-			<span class="location">Location of the event</span>
-		</div>
-		<script>
-			createCalendar(document.querySelectorAll('.add-to-calendar'));
-		</script>
-		
+    <div title="Add to Calendar" class="add-to-calendar">
+      <span class="start">12/18/2018 08:00 AM</span>
+      <span class="end">12/18/2018 10:00 AM</span>
+      <span class="timezone">America/Los_Angeles</span>
+      <span class="title">Summary of the event</span>
+      <span class="description">Description of the event</span>
+      <span class="location">Location of the event</span>
+    </div>
+    <script>
+      createCalendar(document.querySelectorAll('.add-to-calendar'));
+    </script>
+    
 ## Demo
 
 [Here is a live example](http://carlsednaoui.github.io/add-to-calendar-buttons/example.html)

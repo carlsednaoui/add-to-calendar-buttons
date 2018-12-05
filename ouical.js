@@ -8,27 +8,95 @@
 		outlook	: "Download Outlook"
 	};
 	
-  var formatTime = function(date) {
+  var formatTime = function(date,timezone) {
+  	
+  	if (timezone) {
+			// if the date was created without timezoneoffset,
+			// the browsers tz was used. we can nowadays see the
+			// the difference with a different timezone (iow, show
+			// the same time in another timezone), but that is 
+			// the reverse of what we want. But since we then have
+			// the difference, we can add it:
+			//// console.log('before',date.toISOString());
+			var invdate = new Date(date.toLocaleString('en-US', { 
+				timeZone: timezone 
+			}));
+			var diff = date.getTime()-invdate.getTime();
+			var date = new Date(date.getTime()+diff);
+			//// console.log('after',date.toISOString());
+  	}
     return date.toISOString().replace(/-|:|\.\d+/g, '');
+  };
+  
+  var stripISOTime = function(isodatestr) {
+  	return isodatestr.substr(0,isodatestr.indexOf('T'));
   };
 
   var calculateEndTime = function(event) {
-    return event.end ?
-      formatTime(event.end) :
-      formatTime(new Date(event.start.getTime() + (event.duration * MS_IN_MINUTES)));
+    if (event.end) {
+    	return formatTime(event.end,event.timezone);
+    }
+    if (event.duration) {
+      return formatTime(new Date(event.start.getTime() + (event.duration * MS_IN_MINUTES)),event.timezone);
+    }
+    if (event.allday) {
+    	// handled in the generators
+    }
   };
 
   var calendarGenerators = {
+  
     google: function(event) {
-      var startTime = formatTime(event.start);
-      var endTime = calculateEndTime(event);
+      var startTime,endTime;
+			var gevent = {
+				timezone	: event.timezone,
+				start			:	event.start,
+				allday		: event.allday,
+				end				:	event.end,
+				duration	: event.duration
+			};
+			
+			var googletz = event.timezone;
 
+			if (gevent.allday) {
+				// allday ignores timezone, duration and enddate
+				gevent.duration = 60*24;
+				delete gevent.timezone;
+				startTime = formatTime(gevent.start);
+				endTime = calculateEndTime(gevent);
+				startTime = stripISOTime(startTime);
+				endTime = stripISOTime(endTime);
+			} else {
+				if (gevent.timezone) {
+					// google is somehow weird with timezones. 
+					// it works better when giving the local
+					// time of the given timezone without the zulu, 
+					// but then the dates we have need to move inverse 
+					// with tzoffset the browser gave us. 
+					// ignore the timezone and shift the dates:
+					delete gevent.timezone;
+					gevent.start = new Date(gevent.start.getTime()-gevent.start.getTimezoneOffset()*MS_IN_MINUTES);
+					if (gevent.end) {
+						gevent.end = new Date(gevent.end.getTime()-gevent.end.getTimezoneOffset()*MS_IN_MINUTES);
+					}
+					startTime = formatTime(gevent.start);
+					endTime = calculateEndTime(gevent);
+					// strip the zulu and pass the tz as argument later
+					startTime = startTime.substring(0,startTime.length-1);
+					endTime = endTime.substring(0,endTime.length-1);
+				} else {
+					startTime = formatTime(gevent.start);
+					endTime = calculateEndTime(gevent);
+				}
+			}
+			
       var href = encodeURI([
         'https://www.google.com/calendar/render',
         '?action=TEMPLATE',
         '&text=' + (event.title || ''),
         '&dates=' + (startTime || ''),
         '/' + (endTime || ''),
+        (googletz)?'&ctz='+googletz:'',
         '&details=' + (event.description || ''),
         '&location=' + (event.address || ''),
         '&sprop=&sprop=name:'
@@ -38,23 +106,34 @@
     },
 
     yahoo: function(event) {
-      var eventDuration = event.end ?
+    
+      
+      if (event.allday) {
+      	var yahooEventDuration = 'allday';
+      } else {
+      
+      	var eventDuration = event.end ?
         ((event.end.getTime() - event.start.getTime())/ MS_IN_MINUTES) :
         event.duration;
 
-      // Yahoo dates are crazy, we need to convert the duration from minutes to hh:mm
-      var yahooHourDuration = eventDuration < 600 ?
-        '0' + Math.floor((eventDuration / 60)) :
-        Math.floor((eventDuration / 60)) + '';
-
-      var yahooMinuteDuration = eventDuration % 60 < 10 ?
-        '0' + eventDuration % 60 :
-        eventDuration % 60 + '';
-
-      var yahooEventDuration = yahooHourDuration + yahooMinuteDuration;
-
+      	// Yahoo dates are crazy, we need to convert the duration from minutes to hh:mm
+      
+      
+				var yahooHourDuration = eventDuration < 600 ?
+					'0' + Math.floor((eventDuration / 60)) :
+					Math.floor((eventDuration / 60)) + '';
+	
+				var yahooMinuteDuration = eventDuration % 60 < 10 ?
+					'0' + eventDuration % 60 :
+					eventDuration % 60 + '';
+	
+				var yahooEventDuration = yahooHourDuration + yahooMinuteDuration;
+			}
+			
       // Remove timezone from event time
-      var st = formatTime(new Date(event.start - (event.start.getTimezoneOffset() * MS_IN_MINUTES))) || '';
+      // var st = formatTime(new Date(event.start - (event.start.getTimezoneOffset() * MS_IN_MINUTES))) || '';
+      
+      var st = formatTime(event.start,event.timezone) || '';
 
       var href = encodeURI([
         'http://calendar.yahoo.com/?v=60&view=d&type=20',
@@ -70,9 +149,17 @@
     },
 
     ics: function(event, eClass, calendarName) {
-      var startTime = formatTime(event.start);
-      var endTime = calculateEndTime(event);
+      var startTime,endTime;
 
+			if (event.allday) {
+				// allday ignores timezone, enddate and duration
+				startTime = formatTime(event.start);
+				endTime = startTime = stripISOTime(startTime)+'T000000';
+			} else {
+				startTime = formatTime(event.start,event.timezone);
+				endTime = calculateEndTime(event);
+			}
+			
       var href = encodeURI(
         'data:text/calendar;charset=utf8,' + [
           'BEGIN:VCALENDAR',
@@ -128,7 +215,7 @@
   // Make sure we have the necessary event data, such as start time and event duration
   var validParams = function(params) {
     return params.data !== undefined && params.data.start !== undefined &&
-      (params.data.end !== undefined || params.data.duration !== undefined);
+      (params.data.end !== undefined || params.data.duration !== undefined || params.data.allday !== undefined);
   };
 
   var generateMarkup = function(calendars, clazz, calendarId) {
@@ -196,6 +283,10 @@
 		if (!data.end) {
 			node = elm.querySelector('.duration');
 			if (node) data.duration = new Date(node.textContent);
+			if (!data.duration) {
+				node = elm.querySelector('.allday');
+				if (node) data.allday = true;
+			}
 		}
 		
 		node = elm.querySelector('.title');
@@ -233,12 +324,12 @@
   exports.createCalendar = function(params) {
     
     if (params instanceof HTMLElement) {
-    	console.log('HTMLElement');
+    	//console.log('HTMLElement');
     	return parseCalendar(params);
     }
     
     if (params instanceof NodeList) {
-    	console.log('NodeList');
+    	//console.log('NodeList');
     	var success = (params.length>0);
     	Array.prototype.forEach.call(params, function(node) { 
     		success = success && createCalendar(node);
@@ -259,7 +350,9 @@
    
   };
   
-  
-  
+  // for the html type of calendar:
+  document.addEventListener("DOMContentLoaded", function(event) { 
+  	createCalendar(document.querySelectorAll('.add-to-calendar'));
+	});
   
 })(this);
