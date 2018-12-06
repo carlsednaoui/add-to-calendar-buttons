@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="add-to-calendar.js"></script>
+    <style>
+    	html, body {
+    		font-family:sans-serif;
+    	}
+    </style>
+    <link rel="stylesheet" type="text/css" id="add-to-calendar-css" href="add-to-calendar.css">
+    <title>OUICal2 Add to Calendar OUI2 Add To Calender Test</title>
+  </head>
+
+  <body>
+    <h1>OUICal2 Add to Calendar</h1>
+    
+    <b>Created by javascript:</b>
+    
+    <p>
+    	<b>Dec 31st, 2018 19:00</b>
+    	<div id="cal01"></div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00, 45 minutes</b>
+    	<div id="cal02"></div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00 - 21:00</b>
+    	<div id="cal03"></div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018, All day</b>
+    	<div id="cal04"></div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00, Toronto</b>
+    	<div id="cal05"></div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00, 45 minutes, Toronto</b>
+    	<div id="cal06"></div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00 - 21:00, Toronto</b>
+    	<div id="cal07"></div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018, All day, Toronto</b>
+    	<div id="cal08"></div>
+    </p>
+    
+    
+		<script>
+				
+				// create a calendar by hand
+				
+				var cal01 = addToCalendar({
+					data: {
+						title: 'OUI2 Add To Calender Test 01',     
+						start: new Date('Dec 31, 2018 19:00')
+					}
+				});
+				document.getElementById('cal01').appendChild(cal01);
+
+				var cal02 = addToCalendar({
+					data: {
+						title: 'OUI2 Add To Calender Test 02',     
+						start: new Date('Dec 31, 2018 19:00'),
+						duration:45
+					}
+				});
+				document.getElementById('cal02').appendChild(cal02);
+				
+				var cal03 = addToCalendar({
+					data: {
+						title: 'OUI2 Add To Calender Test 03',     
+						start: new Date('Dec 31, 2018 19:00'),
+						end: new Date('Dec 31, 2018 21:00')
+					}
+				});
+				document.getElementById('cal03').appendChild(cal03);
+				
+				var cal04 = addToCalendar({
+					data: {
+						title: 'OUI2 Add To Calender Test 04',     
+						start: new Date('Dec 31, 2018 19:00'),
+						allday: true
+					}
+				});
+				document.getElementById('cal04').appendChild(cal04);
+				
+
+				var cal05 = addToCalendar({
+					data: {
+						title: 'OUI2 Add To Calender Test 05',     
+						start: new Date('Dec 31, 2018 19:00'),
+						timezone:'America/Toronto'
+					}
+				});
+				document.getElementById('cal05').appendChild(cal05);
+				
+
+				var cal06 = addToCalendar({
+					data: {
+						title: 'OUI2 Add To Calender Test 06',     
+						start: new Date('Dec 31, 2018 19:00'),
+						duration:45,
+						timezone:'America/Toronto'
+					}
+				});
+				document.getElementById('cal06').appendChild(cal06);
+				
+
+				var cal07 = addToCalendar({
+					data: {
+						title: 'OUI2 Add To Calender Test 07',     
+						start: new Date('Dec 31, 2018 19:00'),
+						end: new Date('Dec 31, 2018 21:00'),
+						timezone:'America/Toronto'
+					}
+				});
+				document.getElementById('cal07').appendChild(cal07);
+				
+
+				var cal08 = addToCalendar({
+					data: {
+						title: 'OUI2 Add To Calender Test 08',     
+						start: new Date('Dec 31, 2018 19:00'),
+						allday: true,
+						timezone:'America/Toronto'
+					}
+				});
+				document.getElementById('cal08').appendChild(cal08);
+				
+
+
+				
+				
+		</script>
+		
+		<hr>
+		<b>Created by html:</b>
+    
+		
+		<p>
+    	<b>Dec 31st, 2018 19:00</b>
+    	<div title="Add to Calendar" class="add-to-calendar">
+    		<span class="title">OUI2 Add To Calender Test 01</span>
+				<span class="start">12/31/2018 19:00</span>
+			</div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00, 45 minutes</b>
+    	<div title="Add to Calendar" class="add-to-calendar">
+    		<span class="title">OUI2 Add To Calender Test 02</span>
+				<span class="start">12/31/2018 19:00</span>
+				<span class="duration">45</span>
+			</div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00 - 21:00</b>
+    	<div title="Add to Calendar" class="add-to-calendar">
+    		<span class="title">OUI2 Add To Calender Test 03</span>
+				<span class="start">12/31/2018 19:00</span>
+				<span class="end">12/31/2018 21:00</span>
+			</div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018, All day</b>
+    	<div title="Add to Calendar" class="add-to-calendar">
+    		<span class="title">OUI2 Add To Calender Test 04</span>
+				<span class="start">12/31/2018 19:00</span>
+				<span class="allday">true</span>
+			</div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00, Toronto</b>
+    	<div title="Add to Calendar" class="add-to-calendar">	
+    		<span class="title">OUI2 Add To Calender Test 05</span>
+				<span class="start">12/31/2018 19:00</span>
+				<span class="timezone">America/Toronto</span>
+			</div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00, 45 minutes, Toronto</b>
+    	<div title="Add to Calendar" class="add-to-calendar">
+    		<span class="title">OUI2 Add To Calender Test 06</span>
+				<span class="start">12/31/2018 19:00</span>
+				<span class="duration">45</span>
+				<span class="timezone">America/Toronto</span>
+			</div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018 19:00 - 21:00, Toronto</b>
+    	<div title="Add to Calendar" class="add-to-calendar">
+    		<span class="title">OUI2 Add To Calender Test 07</span>
+				<span class="start">12/31/2018 19:00</span>
+				<span class="end">12/31/2018 21:00</span>
+				<span class="timezone">America/Toronto</span>
+			</div>
+    </p>
+    <p>
+    	<b>Dec 31st, 2018, All day, Toronto</b>
+    	<div title="Add to Calendar" class="add-to-calendar">
+    		<span class="title">OUI2 Add To Calender Test 08</span>
+				<span class="start">12/31/2018 19:00</span>
+				<span class="allday">true</span>
+				<span class="timezone">America/Toronto</span>
+			</div>
+    </p>
+   
+		
+		
+  </body>
+</html>

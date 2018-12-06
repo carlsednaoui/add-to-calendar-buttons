@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="ouical.js"></script>
+    <script src="add-to-calendar.js"></script>
     <style>
     	html, body {
     		font-family:sans-serif;
@@ -27,18 +27,18 @@
 				
 				// create a calendar by hand
 				
-				var myCalendar = createCalendar({
+				var myCalendar = addToCalendar({
 					options: {
 						class: 'my-class',
 						id: 'my-id'                               // If you don't pass an id, one will be generated for you.
 					},
 					data: {
 						title: 'Get on the front page of HN',     // Event title
-						// timezone: America/Los_Angeles,					// converts the dates to the IANA timezone 
 						start: new Date('June 15, 2013 19:00'),   // Event start date
-						// allday: true,													// Override end time, duration and timezone, triggers 'all day'
+						// timezone: America/Los_Angeles,					// converts the time to the IANA timezone 
 						end: new Date('June 15, 2013 23:00'),     // If an end time is set, this will take precedence over duration
 						// duration: 120,                            // Event duration (IN MINUTES)
+						// allday: true,													// Override end time, duration and timezone, triggers 'all day'
 						address: 'The internet',
 						description: 'Get on the front page of HN, then prepare for world domination.'
 					}
@@ -56,10 +56,10 @@
     
 			<div title="Add to Calendar" class="add-to-calendar">
 				<span class="start">12/18/2018 08:00 AM</span>
-				<span class="end">12/18/2018 10:00 AM</span>
-				<!--span class="duration">60</span-->
-				<!--span class="allday">true</span-->
 				<span class="timezone">America/Los_Angeles</span>
+				<!--span class="end">12/18/2018 10:00 AM</span-->
+				<!--span class="duration">60</span-->
+				<!--span class="allday">true</span-->				
 				<span class="title">Summary of the event</span>
 				<span class="description">Description of the event</span>
 				<span class="location">Location of the event</span>

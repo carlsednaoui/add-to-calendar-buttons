@@ -21,8 +21,7 @@
 
 input[type=checkbox].add-to-calendar-checkbox {
   position: absolute;
-  top: -9999px;
-  left: -9999px;
+  visibility:hidden;
 }
 
 .add-to-calendar-checkbox + div.add-to-calendar-dropdown a {
