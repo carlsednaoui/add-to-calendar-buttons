@@ -2,7 +2,7 @@
 	display:none;
 }
 
-.add-to-calendar > .add-to-calendar-wrapper {
+.add-to-calendar > .add-to-calendar-widget {
 	display:block;
 }
 
@@ -57,7 +57,7 @@ input[type=checkbox].add-to-calendar-checkbox {
     prettify
 -------------------- */
 
-.add-to-calendar-wrapper {
+.add-to-calendar-widget {
 	font-family:sans-serif;
 	margin: 1em 0;
 	position:relative;
