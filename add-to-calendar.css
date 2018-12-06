@@ -1,3 +1,14 @@
+/* --------------------
+	this css is embedded in the script(s) in
+	minified version. it is here for reference
+	only
+-------------------- */
+
+.add-to-calendar {
+	position: relative;
+  text-align: left;
+}
+
 .add-to-calendar > * {
 	display:none;
 }
