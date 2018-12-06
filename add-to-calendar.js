@@ -1,9 +1,9 @@
 (function(exports) {
 
-	/* --------------
-  	 config 
+  /* --------------
+     config 
   --------------- */
-	
+  
   var MS_IN_MINUTES = 60 * 1000;
     
   var CONFIG = {
@@ -26,7 +26,7 @@
   }
   
   /* --------------
-  	generators 
+    generators 
   --------------- */
   
   var calendarGenerators = {
@@ -127,7 +127,7 @@
         href + '">'+CONFIG.texts.yahoo+'</a>';
     },
 
-		off365: function(event) {
+    off365: function(event) {
       var startTime = formatTime(event.tzstart);
       var endTime = formatTime(event.tzend);
       
@@ -187,7 +187,7 @@
   };
   
   /* --------------
-  	 helpers 
+     helpers 
   --------------- */
   
   var changeTimezone = function(date,timezone) {
@@ -216,8 +216,8 @@
     return isodatestr.substr(0,isodatestr.indexOf('T'));
   };
   
-	/* --------------
-  	 output handling 
+  /* --------------
+     output handling 
   --------------- */
 
   var generateMarkup = function(calendars, clazz, calendarId) {
@@ -273,48 +273,48 @@
   };
  
 
-	/* --------------
-  	 input handling 
+  /* --------------
+     input handling 
   --------------- */
-	
+  
   var sanitizeParams = function(params) {
-  	if (!params.options) {
-  		params.options = {}
-  	}
-  	if (!params.options.id) {
-  		params.options.id = Math.floor(Math.random() * 1000000);
-  	}
-  	if (!params.options.class) {
-  		params.options.class = '';
-  	}
-    if (!params.data) {
-    	params.data = {};
+    if (!params.options) {
+      params.options = {}
     }
-		if (params.data.allday) {
-			delete params.data.end; // may be set later
-			delete params.data.duration;
-		}
-		if (params.data.end) {
-			delete params.data.duration;
-		} else {
-			if (!params.data.duration) {
-				params.data.duration = CONFIG.duration;
-			}
-		}
-		if (params.data.duration) {
-			params.data.end = getEndDate(params.data.start,params.data.duration);
-		}
-		
-		if (params.data.timezone) {
-			params.data.tzstart = changeTimezone(params.data.start,params.data.timezone);
-			params.data.tzend = changeTimezone(params.data.end,params.data.timezone);
-		} else {
-			params.data.tzstart = params.data.start;
-			params.data.tzend = params.data.end;
-		}
-		if (!params.data.title) {
-			params.data.title = CONFIG.texts.title;
-		}
+    if (!params.options.id) {
+      params.options.id = Math.floor(Math.random() * 1000000);
+    }
+    if (!params.options.class) {
+      params.options.class = '';
+    }
+    if (!params.data) {
+      params.data = {};
+    }
+    if (params.data.allday) {
+      delete params.data.end; // may be set later
+      delete params.data.duration;
+    }
+    if (params.data.end) {
+      delete params.data.duration;
+    } else {
+      if (!params.data.duration) {
+        params.data.duration = CONFIG.duration;
+      }
+    }
+    if (params.data.duration) {
+      params.data.end = getEndDate(params.data.start,params.data.duration);
+    }
+    
+    if (params.data.timezone) {
+      params.data.tzstart = changeTimezone(params.data.start,params.data.timezone);
+      params.data.tzend = changeTimezone(params.data.end,params.data.timezone);
+    } else {
+      params.data.tzstart = params.data.start;
+      params.data.tzend = params.data.end;
+    }
+    if (!params.data.title) {
+      params.data.title = CONFIG.texts.title;
+    }
    
     
   };
@@ -376,7 +376,7 @@
   }
   
   /* --------------
-  	 exports 
+     exports 
   --------------- */
   
   exports.closeCalenderOnMouseDown = function(checkbox) {
