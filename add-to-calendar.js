@@ -12,9 +12,10 @@
     texts : {
       label   : "Add to Calendar",
       title   : "New event",
+      download: "Calendar-event.ics",
       google  : "Google Calendar",
-      off365  : "Office 365",
       yahoo   : "Yahoo! Calendar",
+      off365  : "Office 365",
       ical    : "Download iCal",
       outlook : "Download Outlook"
     }
@@ -172,7 +173,7 @@
           'END:VEVENT',
           'END:VCALENDAR'].join('\n'));
 
-      return '<a class="' + eClass + '" download="Event-invite.ics" href="' +
+      return '<a class="' + eClass + '" download="'+CONFIG.texts.download+'" href="' +
         href + '">' + calendarName + '</a>';
     },
 
