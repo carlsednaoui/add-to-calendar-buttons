@@ -428,7 +428,7 @@
   // document.ready
   
   document.addEventListener("DOMContentLoaded", function(event) { 
-    createCalendar(document.querySelectorAll('.add-to-calendar'));
+    createCalendar(document.querySelectorAll(CONFIG.selector));
   });
   
 })(this);
