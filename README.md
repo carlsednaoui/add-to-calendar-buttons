@@ -65,7 +65,7 @@ Then call this:
 Need to generate an add-to-calendar widget on the fly? No problem, [go here](http://carlsednaoui.github.io/add-to-calendar-buttons/generator/generator.html).
 
 ## GitHub Project Page
-[Official Project Page](http://carlsednaoui.github.io/ouical/)
+[Official Project Page](http://carlsednaoui.github.io/add-to-calendar-buttons/)
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
