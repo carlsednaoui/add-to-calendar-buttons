@@ -1,5 +1,5 @@
 /* --------------------
-	this css is embedded in the script(s) in
+	this css is embedded in the script in
 	minified version. it is here for reference
 	only
 -------------------- */
@@ -53,6 +53,10 @@ input[type=checkbox].add-to-calendar-checkbox {
 }
 
 .icon-outlook:before {
+  /*this is the default icon*/
+}
+
+.icon-off365:before {
   /*this is the default icon*/
 }
 
