@@ -1,45 +1,72 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="ouical.js"></script>
-    <link rel="stylesheet" href="main.css">
-    <title>OuiCal Example</title>
+    <script src="add-to-calendar.js"></script>
+    <style>
+    	html, body {
+    		font-family:sans-serif;
+    	}
+    </style>
+    <title>OUICal2 Add to Calendar Example</title>
   </head>
 
   <body>
-    <div class="new-cal"></div>
-    <div class="new-cal2"></div>
-  <script>
-      var myCalendar = createCalendar({
-        options: {
-          class: 'my-class',
-          id: 'my-id'                               // You need to pass an ID. If you don't, one will be generated for you.
-        },
-        data: {
-          title: 'Get on the front page of HN',     // Event title
-          start: new Date('June 15, 2013 19:00'),   // Event start date
-          duration: 120,                            // Event duration (IN MINUTES)
-          end: new Date('June 15, 2013 23:00'),     // You can also choose to set an end time.
-                                                    // If an end time is set, this will take precedence over duration
-          address: 'The internet',
-          description: 'Get on the front page of HN, then prepare for world domination.'
-        }
-      }),
-      myCalendar2 = createCalendar({
-        options: {
-          class: 'my-class'                         // Notice how this one does not have a preset ID
-        },
-        data: {
-          title: 'Go to the gym',
-          start: new Date('June 15, 2013 17:00'),
-          duration: 60,
-          address: 'Tough Boys Gym',
-          description: 'Work them biceps out.'
-        }
-      });
+    <h1>OUICal2 Add to Calendar</h1>
+    
+    
+    <p>
+    	This example creates a calendar from javascript data. Check the source to see how that's done.
+    	<br><br>
+    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    	<div class="new-cal"></div>
+    </p>
+    
+    
+		<script>
+				
+				// create a calendar by hand
+				
+				var myCalendar = addToCalendar({
+					options: {
+						class: 'my-class',
+						id: 'my-id'                               // If you don't pass an id, one will be generated for you.
+					},
+					data: {
+						title: 'Get on the front page of HN',     // Event title
+						start: new Date('June 15, 2013 19:00'),   // Event start date
+						// timezone: America/Los_Angeles,					// converts the time to the IANA timezone 
+						end: new Date('June 15, 2013 23:00'),     // If an end time is set, this will take precedence over duration
+						// duration: 120,                            // Event duration (IN MINUTES)
+						// allday: true,													// Override end time, duration and timezone, triggers 'all day'
+						address: 'The internet',
+						description: 'Get on the front page of HN, then prepare for world domination.'
+					}
+				});
 
-      document.querySelector('.new-cal').appendChild(myCalendar);
-      document.querySelector('.new-cal2').appendChild(myCalendar2);
-  </script>
+				document.querySelector('.new-cal').appendChild(myCalendar);
+				
+		</script>
+		
+		<p>
+    	This example creates a calendar from html content. Check the source to see how that's done.
+    	<br><br>
+    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    
+    
+			<div title="Add to Calendar" class="add-to-calendar">
+				<span class="start">12/18/2018 08:00 AM</span>
+				<span class="timezone">America/Los_Angeles</span>
+				<!--span class="end">12/18/2018 10:00 AM</span-->
+				<!--span class="duration">60</span-->
+				<!--span class="allday">true</span-->				
+				<span class="title">Summary of the event</span>
+				<span class="description">Description of the event</span>
+				<span class="location">Location of the event</span>
+			</div>
+    
+    </p>
+    
+		
   </body>
 </html>

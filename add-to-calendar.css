@@ -1,24 +1,45 @@
-#add-to-calendar-checkbox-label {
+/* --------------------
+	this css is embedded in the script in
+	minified version. it is here for reference
+	only
+-------------------- */
+
+.add-to-calendar {
+	position: relative;
+  text-align: left;
+}
+
+.add-to-calendar > * {
+	display:none;
+}
+
+.add-to-calendar > .add-to-calendar-widget {
+	display:block;
+}
+
+.add-to-calendar-label {
   cursor: pointer;
 }
 
-.add-to-calendar-checkbox ~ a {
+.add-to-calendar-checkbox + div.add-to-calendar-dropdown {
   display: none;
+  margin-left: 20px;
 }
 
-.add-to-calendar-checkbox:checked ~ a {
+.add-to-calendar-checkbox:checked + div.add-to-calendar-dropdown {
   display: block;
-  width: 150px;
-  margin-left: 20px;
 }
 
 input[type=checkbox].add-to-calendar-checkbox {
   position: absolute;
-  top: -9999px;
-  left: -9999px;
+  visibility:hidden;
 }
 
-.add-to-calendar-checkbox ~ a:before {
+.add-to-calendar-checkbox + div.add-to-calendar-dropdown a {
+	display:block;
+}
+
+.add-to-calendar-checkbox + div.add-to-calendar-dropdown a:before {
   width: 16px;
   height: 16px;
   display: inline-block;
@@ -35,6 +56,10 @@ input[type=checkbox].add-to-calendar-checkbox {
   /*this is the default icon*/
 }
 
+.icon-off365:before {
+  /*this is the default icon*/
+}
+
 .icon-yahoo:before {
   background-position: -36px +4px;
 }
@@ -42,3 +67,59 @@ input[type=checkbox].add-to-calendar-checkbox {
 .icon-google:before {
   background-position: -52px 0;
 }
+
+/* --------------------
+    prettify
+-------------------- */
+
+.add-to-calendar-widget {
+	font-family:sans-serif;
+	margin: 1em 0;
+	position:relative;
+}
+
+.add-to-calendar-label {
+	display: inline-block;
+	background-color: white;
+  background-image: url(data:image/vndmicrosofticon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/wAAAAAAAAAAVlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/AAAAAFZWVv9WVlb///////////9WVlb///////////9WVlb///////////9WVlb///////////9WVlb/VlZW/wAAAABWVlb/VlZW////////////VlZW////////////VlZW////////////VlZW////////////VlZW/1ZWVv8AAAAAVlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/AAAAAFZWVv9WVlb///////////9WVlb///////////9WVlb///////////9WVlb///////////9WVlb/VlZW/wAAAABWVlb/VlZW////////////VlZW////////////VlZW////////////VlZW////////////VlZW/1ZWVv8AAAAAVlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/AAAAAFZWVv9WVlb///////////9WVlb///////////9WVlb///////////9WVlb///////////9WVlb/VlZW/wAAAABWVlb/VlZW////////////VlZW////////////VlZW////////////VlZW////////////VlZW/1ZWVv8AAAAAVlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/AAAAAFZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/1ZWVv9WVlb/VlZW/wAAAAAAAAAAVlZW/1ZWVv///////////1ZWVv9WVlb/VlZW/1ZWVv9WVlb///////////9WVlb/VlZW/wAAAAAAAAAAAAAAAAAAAABWVlb///////////9WVlb/AAAAAAAAAAAAAAAAVlZW////////////VlZW/wAAAAAAAAAAAAAAAAAAAAAAAAAAVlZW/1ZWVv9WVlb/VlZW/wAAAAAAAAAAAAAAAFZWVv9WVlb/VlZW/1ZWVv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==);
+  background-position: 10px 45%;
+	background-repeat:no-repeat;
+	padding: 1em 1em 1em 40px;
+	background-size: 20px 20px;
+	border-radius: 3px;
+	box-shadow: 0 0 0 0.5px rgba(50, 50, 93, .17), 
+		0 2px 5px 0 rgba(50, 50, 93, .1), 
+		0 1px 1.5px 0 rgba(0, 0, 0, .07), 
+		0 1px 2px 0 rgba(0, 0, 0, .08), 
+		0 0 0 0 transparent!important;	
+}
+
+.add-to-calendar-dropdown  {
+	position: absolute;
+	z-index: 99;
+	background-color: white;
+	top: 0;
+	left:0;
+	padding: 1em;
+	margin:0!important;
+	border-radius: 3px;
+	box-shadow: 0 0 0 0.5px rgba(50, 50, 93, .17), 
+		0 2px 5px 0 rgba(50, 50, 93, .1), 
+		0 1px 1.5px 0 rgba(0, 0, 0, .07), 
+		0 1px 2px 0 rgba(0, 0, 0, .08), 
+		0 0 0 0 transparent!important;
+}
+
+.add-to-calendar-dropdown a {
+	display: block;
+	line-height: 1.75em;
+	text-decoration: none;
+	color: inherit;
+	opacity:.7;
+}
+
+.add-to-calendar-dropdown a:hover {
+	opacity:1;
+}
+
+    
