@@ -12,6 +12,25 @@
   };
 
   var calendarGenerators = {
+    office365: function(event) {
+      var startTime = formatTime(event.start);
+      var endTime = calculateEndTime(event);
+      
+      var href = encodeURI([
+        'https://outlook.office365.com/owa/',
+        '?path=/calendar/action/compose',
+        '&rru=addevent',
+        '&subject=' + (event.title || ''),
+        '&startdt=' + (startTime || ''),
+        '&enddt=' + (endTime || ''),
+        '&body=' + (event.description || ''),
+        '&location=' + (event.address || ''),
+        '&allday=false'
+      ].join(''));
+      return '<a class="icon-outlook" target="_blank" href="' +
+        href + '">Office365</a>';
+    },
+    
     google: function(event) {
       var startTime = formatTime(event.start);
       var endTime = calculateEndTime(event);
@@ -97,6 +116,7 @@
   var generateCalendars = function(event) {
     return {
       google: calendarGenerators.google(event),
+      office365: calendarGenerators.office365(event),
       yahoo: calendarGenerators.yahoo(event),
       ical: calendarGenerators.ical(event),
       outlook: calendarGenerators.outlook(event)
