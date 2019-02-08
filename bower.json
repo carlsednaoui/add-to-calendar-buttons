@@ -1,0 +1,25 @@
+{
+  "name": "add-to-calendar-buttons",
+  "homepage": "https://github.com/carlsednaoui/add-to-calendar-buttons",
+  "authors": [
+    "Carl Sednaoui <carlsed@gmail.com>"
+  ],
+  "description": "Easily add a \"add to calendar\" button to your websites. This JavaScript library supports Google Calendar, iCal, Outlook and Yahoo Calendar.",
+  "main": "ouical.min.js",
+  "moduleType": [],
+  "keywords": [
+    "calendar",
+    "outlook",
+    "ical",
+    "google",
+    "yahoo"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
