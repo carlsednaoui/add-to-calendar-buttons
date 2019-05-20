@@ -66,7 +66,7 @@
         '&in_loc=' + (event.address || '')
       ].join(''));
 
-      return '<a class="icon-yahoo" href="' +
+      return '<a class="icon-yahoo" target="_blank" href="' +
         href + '">Yahoo! Calendar</a>';
     },
 
@@ -88,7 +88,7 @@
           'END:VEVENT',
           'END:VCALENDAR'].join('\n'));
 
-      return '<a class="' + eClass + '" target="_blank" href="' +
+      return '<a class="' + eClass + '" download href="' +
         href + '">' + calendarName + ' Calendar</a>';
     },
 
