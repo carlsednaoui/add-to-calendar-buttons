@@ -35,16 +35,23 @@
         ((event.end.getTime() - event.start.getTime())/ MS_IN_MINUTES) :
         event.duration;
 
-      // Yahoo dates are crazy, we need to convert the duration from minutes to hh:mm
-      var yahooHourDuration = eventDuration < 600 ?
-        '0' + Math.floor((eventDuration / 60)) :
-        Math.floor((eventDuration / 60)) + '';
+        if (event.allday)
+        {
+            var yahooEventDuration = 'allday';
+        }
+        else
+        {
+            // Yahoo dates are crazy, we need to convert the duration from minutes to hh:mm
+            var yahooHourDuration = eventDuration < 600 ?
+                '0' + Math.floor((eventDuration / 60)) :
+                Math.floor((eventDuration / 60)) + '';
 
-      var yahooMinuteDuration = eventDuration % 60 < 10 ?
-        '0' + eventDuration % 60 :
-        eventDuration % 60 + '';
+            var yahooMinuteDuration = eventDuration % 60 < 10 ?
+                '0' + eventDuration % 60 :
+                eventDuration % 60 + '';
 
-      var yahooEventDuration = yahooHourDuration + yahooMinuteDuration;
+            var yahooEventDuration = yahooHourDuration + yahooMinuteDuration;
+        }
 
       // Remove timezone from event time
       var st = formatTime(new Date(event.start - (event.start.getTimezoneOffset() *
@@ -81,7 +88,7 @@
           'END:VEVENT',
           'END:VCALENDAR'].join('\n'));
 
-      return '<a class="' + eClass + '" target="_blank" href="' +
+      return '<a class="' + eClass + '" download href="' +
         href + '">' + calendarName + ' Calendar</a>';
     },
 

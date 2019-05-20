@@ -1,0 +1,24 @@
+{
+  "name": "add-to-calendar-buttons",
+  "version": "1.0.0",
+  "description": "Generate add to calendar buttons",
+  "main": "ouical.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlsednaoui/add-to-calendar-buttons.git"
+  },
+  "author": "Carl Sednaoui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlsednaoui/add-to-calendar-buttons/issues"
+  },
+  "homepage": "https://github.com/carlsednaoui/add-to-calendar-buttons#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.1"
+  }
+}
