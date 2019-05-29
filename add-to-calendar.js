@@ -187,13 +187,13 @@
           'END:VEVENT',
           'END:VCALENDAR'].join('\n'));
 
-			if (ieMustDoBlob) {
-				return '<a class="' + eClass + '" href="javascript:ieDownloadCalendar(\'' +
-        	encodeURIComponent(href.replace(/'/g, "%27")) + '\')">' + calendarName + '</a>';
-			}
-			
+      if (ieMustDoBlob) {
+        return '<a class="' + eClass + '" href="javascript:ieDownloadCalendar(\'' +
+          encodeURIComponent(href.replace(/'/g, "%27")) + '\')">' + calendarName + '</a>';
+      }
+      
       return '<a class="' + eClass + '" download="'+CONFIG.texts.download+'" href="' + 
-      	href + '">' + calendarName + '</a>';
+        href + '">' + calendarName + '</a>';
      
       
     },
@@ -405,7 +405,7 @@
       var blob = new Blob([url], { type: 'text/calendar' });
       window.navigator.msSaveOrOpenBlob(blob, CONFIG.texts.download);
     } else {
-    	alert(CONFIG.texts.ienoblob);
+      alert(CONFIG.texts.ienoblob);
     }
   };
 
