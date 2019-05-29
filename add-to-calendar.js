@@ -10,20 +10,34 @@
     selector  : ".add-to-calendar",
     duration  : 60,
     texts : {
-      label   : "Add to Calendar",
-      title   : "New event",
-      download: "Calendar-event.ics",
-      google  : "Google Calendar",
-      yahoo   : "Yahoo! Calendar",
-      off365  : "Office 365",
-      ical    : "Download iCal",
-      outlook : "Download Outlook"
+      label   	: "Add to Calendar",
+      title   	: "New event",
+      download	: "Calendar-event.ics",
+      google  	: "Google Calendar",
+      yahoo   	: "Yahoo! Calendar",
+      off365  	: "Office 365",
+      ical    	: "Download iCal",
+      outlook 	: "Download Outlook",
+      ienoblob 	: "Sorry, your browser does not support downloading Calendar events."
     }
   };
   
   if (typeof ADDTOCAL_CONFIG != "undefined") {
     CONFIG = ADDTOCAL_CONFIG;
   }
+  
+  /* --------------
+    browser sniffing 
+  --------------- */
+  
+  function ieVersion() {
+    var match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(navigator.userAgent);
+    if (match) return parseInt(match[2]);
+    return false;
+  }
+  var ieCanDoBlob = ('msSaveOrOpenBlob' in window.navigator);
+  var ieMustDoBlob = ieVersion() && ieVersion() <= 18;
+  
   
   /* --------------
     generators 
@@ -173,8 +187,15 @@
           'END:VEVENT',
           'END:VCALENDAR'].join('\n'));
 
-      return '<a class="' + eClass + '" download="'+CONFIG.texts.download+'" href="' +
-        href + '">' + calendarName + '</a>';
+			if (ieMustDoBlob) {
+				return '<a class="' + eClass + '" href="javascript:ieDownloadCalendar(\'' +
+        	encodeURIComponent(href.replace(/'/g, "%27")) + '\')">' + calendarName + '</a>';
+			}
+			
+      return '<a class="' + eClass + '" download="'+CONFIG.texts.download+'" href="' + 
+      	href + '">' + calendarName + '</a>';
+     
+      
     },
 
     ical: function(event) {
@@ -378,7 +399,16 @@
   /* --------------
      exports 
   --------------- */
-  
+
+  exports.ieDownloadCalendar = function(url) {
+    if (ieCanDoBlob) {
+      var blob = new Blob([url], { type: 'text/calendar' });
+      window.navigator.msSaveOrOpenBlob(blob, CONFIG.texts.download);
+    } else {
+    	alert(CONFIG.texts.ienoblob);
+    }
+  };
+
   exports.closeCalenderOnMouseDown = function(checkbox) {
     //console.log('check');
     var closeCalendar = function() { 
