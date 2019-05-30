@@ -36,6 +36,7 @@ input[type=checkbox].add-to-calendar-checkbox {
 }
 
 .add-to-calendar-checkbox + div.add-to-calendar-dropdown a {
+	cursor:pointer;
 	display:block;
 }
 
