@@ -30,13 +30,9 @@
     browser sniffing 
   --------------- */
   
-  function ieVersion() {
-    var match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(navigator.userAgent);
-    if (match) return parseInt(match[2]);
-    return false;
-  }
-  var ieCanDoBlob = ('msSaveOrOpenBlob' in window.navigator);
-  var ieMustDoBlob = ieVersion() && ieVersion() <= 18;
+  // ie < edg (=chromium) doesnt support data-uri:text/calendar
+  var ieCanDownload = ('msSaveOrOpenBlob' in window.navigator);
+  var ieMustDownload = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(navigator.userAgent);
   
   
   /* --------------
@@ -172,8 +168,7 @@
         endTime = formatTime(event.tzend);
       }
       
-      var href = encodeURI(
-        'data:text/calendar;charset=utf8,' + [
+      var cal = [
           'BEGIN:VCALENDAR',
           'VERSION:2.0',
           'BEGIN:VEVENT',
@@ -185,12 +180,14 @@
           'LOCATION:' + (event.address || ''),
           'UID:' + (event.id || '') + '-' + document.URL,
           'END:VEVENT',
-          'END:VCALENDAR'].join('\n'));
-
-      if (ieMustDoBlob) {
+          'END:VCALENDAR'].join('\n');
+          
+      if (ieMustDownload) {
         return '<a class="' + eClass + '" onclick="ieDownloadCalendar(\'' +
-          href.replace(/'/g, "%27") + '\')">' + calendarName + '</a>';
+          escapeJSValue(cal) + '\')">' + calendarName + '</a>';
       }
+      
+      var href = encodeURI('data:text/calendar;charset=utf8,' + cal);
       
       return '<a class="' + eClass + '" download="'+CONFIG.texts.download+'" href="' + 
         href + '">' + calendarName + '</a>';
@@ -235,6 +232,16 @@
 
   var stripISOTime = function(isodatestr) {
     return isodatestr.substr(0,isodatestr.indexOf('T'));
+  };
+  
+  var escapeJSValue = function(text) {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\"/g, '&quot;')
+      .replace(/\'/g, '\\\'')
+      .replace(/(\r?\n|\r)/gm, '\\n');
   };
   
   /* --------------
@@ -400,9 +407,9 @@
      exports 
   --------------- */
 
-  exports.ieDownloadCalendar = function(url) {
-    if (ieCanDoBlob) {
-      var blob = new Blob([url], { type: 'text/calendar' });
+  exports.ieDownloadCalendar = function(cal) {
+    if (ieCanDownload) {
+      var blob = new Blob([cal], { type: 'text/calendar' });
       window.navigator.msSaveOrOpenBlob(blob, CONFIG.texts.download);
     } else {
       alert(CONFIG.texts.ienoblob);
