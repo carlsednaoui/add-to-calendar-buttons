@@ -389,6 +389,8 @@
     document.addEventListener("mousedown",closeCalendar);
   }
   
+  exports.generateCalendars = generateCalendars;
+  
   // bwc
   exports.createCalendar = function(params) {
     return addToCalendar(params);
