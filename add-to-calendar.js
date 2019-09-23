@@ -436,7 +436,7 @@
       console.error('Event details missing.');
       return;
     }
-  	return generateCalendars(params);
+    return generateCalendars(params.data);
   }
   
   // bwc
