@@ -14,9 +14,9 @@
   <body>
     <h1>OUICal2 Add to Calendar</h1>
     
-    
+    <h3>Widget from javascript data</h3>
     <p>
-    	This example creates a calendar from javascript data. Check the source to see how that's done.
+    	The example below  created a calendar from javascript data. Check the source to see how that's done.
     	<br><br>
     	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     	<div class="new-cal"></div>
@@ -27,7 +27,7 @@
 				
 				// create a calendar by hand
 				
-				var myCalendar = addToCalendar({
+				var ouical = addToCalendar({
 					options: {
 						class: 'my-class',
 						id: 'my-id'                               // If you don't pass an id, one will be generated for you.
@@ -44,12 +44,15 @@
 					}
 				});
 
-				document.querySelector('.new-cal').appendChild(myCalendar);
+				document.querySelector('.new-cal').appendChild(ouical);
 				
 		</script>
 		
+		<hr>
+		
+		<h3>With from HTML input</h3>
 		<p>
-    	This example creates a calendar from html content. Check the source to see how that's done.
+    	The example below  created a calendar from html content. Check the source to see how that's done.
     	<br><br>
     	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     
@@ -67,6 +70,38 @@
     
     </p>
     
+    <hr>
+		
+		<h3>Generating pure data as output</h3>
+		<p>
+    	The example below created the calendar links from javascript data 
+    	and returned it as a javascript object. Check the source to see how that's done.
+    	<br><br>
+    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    	<xmp class="new-cal-data"></xmp>
+    </p>
+    
+    
+		<script>
+				
+				// create a calendar by hand
+				
+				var ouicalData = addToCalendarData({
+					data: {
+						title: 'Get on the front page of \'HN\'',     // Event title
+						start: new Date('June 15, 2013 19:00'),   	// Event start date
+						// timezone: America/Los_Angeles,						// converts the time to the IANA timezone 
+						end: new Date('June 15, 2013 23:00'),     	// If an end time is set, this will take precedence over duration
+						// duration: 120,                           // Event duration (IN MINUTES)
+						// allday: true,														// Override end time, duration and timezone, triggers 'all day'
+						address: 'The internet',
+						description: 'Get on the front page of "HN", then prepare for World Domination.'
+					}
+				});
+				var ouicalNode = document.createTextNode(JSON.stringify(ouicalData,null,'\t'));
+				document.querySelector('.new-cal-data').appendChild(ouicalNode);
+				
+		</script>
 		
   </body>
 </html>
