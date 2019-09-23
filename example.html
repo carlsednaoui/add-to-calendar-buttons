@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +5,12 @@
     <style>
     	html, body {
     		font-family:sans-serif;
+    	}
+    	xmp {
+    		background-color:#ccc;
+    		width:90%;
+    		margin:0 5%;
+    		overflow:auto;
     	}
     </style>
     <title>OUICal2 Add to Calendar Example</title>
@@ -19,7 +24,7 @@
     	The example below  created a calendar from javascript data. Check the source to see how that's done.
     	<br><br>
     	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    	<div class="new-cal"></div>
+    	<div class="ouical-button"></div>
     </p>
     
     
@@ -44,7 +49,7 @@
 					}
 				});
 
-				document.querySelector('.new-cal').appendChild(ouical);
+				document.querySelector('.ouical-button').appendChild(ouical);
 				
 		</script>
 		
@@ -76,9 +81,7 @@
 		<p>
     	The example below created the calendar links from javascript data 
     	and returned it as a javascript object. Check the source to see how that's done.
-    	<br><br>
-    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    	<xmp class="new-cal-data"></xmp>
+    	<xmp class="ouical-data"></xmp>
     </p>
     
     
@@ -87,6 +90,10 @@
 				// create a calendar by hand
 				
 				var ouicalData = addToCalendarData({
+					options: {
+						class: 'my-class',
+						id: 'my-id'                               // If you don't pass an id, one will be generated for you.
+					},
 					data: {
 						title: 'Get on the front page of \'HN\'',     // Event title
 						start: new Date('June 15, 2013 19:00'),   	// Event start date
@@ -99,7 +106,7 @@
 					}
 				});
 				var ouicalNode = document.createTextNode(JSON.stringify(ouicalData,null,'\t'));
-				document.querySelector('.new-cal-data').appendChild(ouicalNode);
+				document.querySelector('.ouical-data').appendChild(ouicalNode);
 				
 		</script>
 		
