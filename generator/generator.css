@@ -13,11 +13,10 @@ body {
 }
 
 header {
-  background: #3e73f8;
-  height: 50px;
+  background: #3E73B8;
   color: #fdfaff;
   text-align: center;
-  padding-top: 20px;
+  padding: 20px 0;
 }
 
 h1 {
@@ -56,7 +55,7 @@ label + input {
 
 input[type=submit] {
   padding: 10px;
-  background-color: #3e73f8;
+  background-color: #3E73B8;
   color: #fdfaff;
   font-size: 1.1em;
   border: none;

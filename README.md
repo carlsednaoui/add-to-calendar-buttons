@@ -82,17 +82,39 @@ The only fields that are mandatory are:
     </div>
     
     
+### method 3
+
+If you are ony interested in the data, call 'addToCalendarData' with your event info, pass in any optional parameters as described in method #1. An object with some html links is returned.
+
+
+#### Example
+
+    var caldata = addToCalendarData({
+      data: {
+        // Event title
+        title: 'Get on the front page of HN',
+
+        // Event start date
+        start: new Date('June 15, 2013 19:00'),
+        
+        //.. and the rest was optional.
+        
+      }
+    });
+    console.log(caldata);
+
+
 ## Demo
 
-[Here is a live example](http://carlsednaoui.github.io/add-to-calendar-buttons/example.html)
+[Here is a live example](https://commonpike.github.io/add-to-calendar-buttons/example.html)
 
 
 
 ## Calendar Generator
-Need to generate an add-to-calendar widget on the fly? No problem, [go here](http://carlsednaoui.github.io/add-to-calendar-buttons/generator/generator.html).
+Need to generate an add-to-calendar widget on the fly? No problem, [go here](https://commonpike.github.io/add-to-calendar-buttons/generator/generator.html).
 
 ## GitHub Project Page
-[Official Project Page](http://carlsednaoui.github.io/ouical/)
+[Official Project Page](http://commonpike.github.io/ouical/)
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
