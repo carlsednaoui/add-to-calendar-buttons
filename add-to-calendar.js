@@ -318,6 +318,9 @@
     if (!params.data) {
       params.data = {};
     }
+    if (!params.data.start) {
+    	params.data.start=new Date();
+    }
     if (params.data.allday) {
       delete params.data.end; // may be set later
       delete params.data.duration;
@@ -426,7 +429,15 @@
     document.addEventListener("mousedown",closeCalendar);
   }
   
-  exports.generateCalendars = generateCalendars;
+  exports.addToCalendarData = function(params) {
+  	if (!params) params = {};
+  	sanitizeParams(params);
+    if (!validParams(params)) {
+      console.error('Event details missing.');
+      return;
+    }
+  	return generateCalendars(params);
+  }
   
   // bwc
   exports.createCalendar = function(params) {
@@ -434,6 +445,8 @@
   };
   
   exports.addToCalendar = function(params) {
+    
+    if (!params) params = {};
     
     if (params instanceof HTMLElement) {
       //console.log('HTMLElement');
@@ -452,7 +465,7 @@
     sanitizeParams(params);
     
     if (!validParams(params)) {
-      console.log('Event details missing.');
+      console.error('Event details missing.');
       return;
     }
 
