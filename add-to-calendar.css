@@ -1,3 +1,22 @@
+/* --------------------
+	this css is embedded in the script in
+	minified version. it is here for reference
+	only
+-------------------- */
+
+.add-to-calendar {
+	position: relative;
+  text-align: left;
+}
+
+.add-to-calendar > * {
+	display:none;
+}
+
+.add-to-calendar > .add-to-calendar-widget {
+	display:block;
+}
+
 .add-to-calendar-label {
   cursor: pointer;
 }
@@ -13,8 +32,7 @@
 
 input[type=checkbox].add-to-calendar-checkbox {
   position: absolute;
-  top: -9999px;
-  left: -9999px;
+  visibility:hidden;
 }
 
 .add-to-calendar-checkbox + div.add-to-calendar-dropdown a {
@@ -38,6 +56,10 @@ input[type=checkbox].add-to-calendar-checkbox {
   /*this is the default icon*/
 }
 
+.icon-off365:before {
+  /*this is the default icon*/
+}
+
 .icon-yahoo:before {
   background-position: -36px +4px;
 }
@@ -50,7 +72,7 @@ input[type=checkbox].add-to-calendar-checkbox {
     prettify
 -------------------- */
 
-.add-to-calendar {
+.add-to-calendar-widget {
 	font-family:sans-serif;
 	margin: 1em 0;
 	position:relative;
