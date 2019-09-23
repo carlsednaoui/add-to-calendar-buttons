@@ -84,15 +84,15 @@ The only fields that are mandatory are:
     
 ## Demo
 
-[Here is a live example](http://carlsednaoui.github.io/add-to-calendar-buttons/example.html)
+[Here is a live example](https://commonpike.github.io/add-to-calendar-buttons/example.html)
 
 
 
 ## Calendar Generator
-Need to generate an add-to-calendar widget on the fly? No problem, [go here](http://carlsednaoui.github.io/add-to-calendar-buttons/generator/generator.html).
+Need to generate an add-to-calendar widget on the fly? No problem, [go here](https://commonpike.github.io/add-to-calendar-buttons/generator/generator.html).
 
 ## GitHub Project Page
-[Official Project Page](http://carlsednaoui.github.io/ouical/)
+[Official Project Page](http://commonpike.github.io/ouical/)
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
