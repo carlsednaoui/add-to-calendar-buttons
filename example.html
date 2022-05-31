@@ -7,9 +7,16 @@
   </head>
 
   <body>
-    <div class="new-cal"></div>
-    <div class="new-cal2"></div>
+    <div class="new-cal">Example 1</div>
+    <div class="new-cal2">Example 2</div>
   <script>
+      Date.prototype.addDays = function (days) {
+        let date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+      }
+      let rightNow = new Date();
+
       var myCalendar = createCalendar({
         options: {
           class: 'my-class',
@@ -17,9 +24,9 @@
         },
         data: {
           title: 'Get on the front page of HN',     // Event title
-          start: new Date('June 15, 2013 19:00'),   // Event start date
+          start: new Date('June 15, 2022 19:00'),   // Event start date
           duration: 120,                            // Event duration (IN MINUTES)
-          end: new Date('June 15, 2013 23:00'),     // You can also choose to set an end time.
+          //end: new Date('June 15, 2022 23:00'),   // You can also choose to set an end time.
                                                     // If an end time is set, this will take precedence over duration
           address: 'The internet',
           description: 'Get on the front page of HN, then prepare for world domination.'
@@ -31,8 +38,9 @@
         },
         data: {
           title: 'Go to the gym',
-          start: new Date('June 15, 2013 17:00'),
-          duration: 60,
+          start: rightNow,
+          end: rightNow.addDays(2),
+          allDay: true,                             //Make it an 'All Day' event. A 1 day event ends on the following day. A 2-day event ends 2 days after it starts (ie. start + 2 days), etc.
           address: 'Tough Boys Gym',
           description: 'Work them biceps out.'
         }
