@@ -1,17 +1,12 @@
 ;(function(exports) {
   var MS_IN_MINUTES = 60 * 1000;
-  Date.prototype.addDays = function (days) {
-    let date = new Date(this.valueOf());
-    date.setDate(date.getDate() + days);
-    return date;
-  }
 
   var formatTime = function(date, allDay = false) {
     return allDay ? date.toISOString().replace(/-|:|\.\d+/g, '').substr(0,8) : date.toISOString().replace(/-|:|\.\d+/g, '');
   };
 
   var calculateEndTime = function(event) {
-    return event.end ? event.end : (event.start + event.duration);
+    return event.end ? event.end : new Date(event.start.getTime() + (event.duration * MS_IN_MINUTES));
   };
 
   var calendarGenerators = {
@@ -37,7 +32,6 @@
       // Remove timezone from event time(s)
       var st = formatTime(new Date(event.start - (event.start.getTimezoneOffset() * MS_IN_MINUTES))) || '';
       var et = calculateEndTime(event);
-          et = event.allDay ? et.addDays(-1) : et; //Make Yahoo output consistent with other calendars for All Day events
           et = formatTime(new Date(et - (et.getTimezoneOffset() * MS_IN_MINUTES))) || '';
 
       var href = encodeURI([

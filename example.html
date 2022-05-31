@@ -15,7 +15,7 @@
         date.setDate(date.getDate() + days);
         return date;
       }
-      let today = new Date();
+      let rightNow = new Date();
 
       var myCalendar = createCalendar({
         options: {
@@ -26,7 +26,7 @@
           title: 'Get on the front page of HN',     // Event title
           start: new Date('June 15, 2022 19:00'),   // Event start date
           duration: 120,                            // Event duration (IN MINUTES)
-          end: new Date('June 15, 2022 23:00'),     // You can also choose to set an end time.
+          //end: new Date('June 15, 2022 23:00'),   // You can also choose to set an end time.
                                                     // If an end time is set, this will take precedence over duration
           address: 'The internet',
           description: 'Get on the front page of HN, then prepare for world domination.'
@@ -38,9 +38,9 @@
         },
         data: {
           title: 'Go to the gym',
-          start: today,
-          end: today.addDays(2),
-          allDay: true,                             //Make it an 'All Day' event. To create a 2-day 'All Day' event, it should end 2 days after it starts (ie. start + 2 days)
+          start: rightNow,
+          end: rightNow.addDays(2),
+          allDay: true,                             //Make it an 'All Day' event. A 1 day event ends on the following day. A 2-day event ends 2 days after it starts (ie. start + 2 days), etc.
           address: 'Tough Boys Gym',
           description: 'Work them biceps out.'
         }
